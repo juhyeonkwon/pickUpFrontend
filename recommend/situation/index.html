@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"> <!-- 모니터 크기에 따른 웹페이지의 크기-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- edge 표준모드-->
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script type="text/javascript">
+         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+      </script>
+   <![endif]-->
+    <title>옷좀골라줄래</title>
+    <!-- 스타일 시트-->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+   <div class="overlay">
+       
+   </div>
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <span id="sidebarCollapse">
+                            <img src="assets/img/btn_category.png" alt="카테고리">
+                        </span>
+                        <em class="logo">
+                            <a href=#>
+                                <strong>옷 좀 골라줄래?</strong>
+                                <em>
+                                    Can you pick some clothes?
+                                </em>
+
+                            </a>
+                        </em>
+                    </h1>
+                    <div class="search" id="sc">
+                        <input class="search__input" type="text" placeholder="Search">
+                        <input class="search__btn" type="button">
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div id="sidebar" class="sidenav">
+            <a class="closebtn">&times;</a>
+            <a href="#">코디 Photo</a>
+            <a href="#">이상형 월드컵</a>
+            <a href="#">코디 추천</a>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+    <section id="banner1">
+        <div class="container">
+            <div class="row">
+                <img src="assets/img/banner.png">
+            </div>
+        </div>
+    </section>
+    <section id="codi">
+        <div class="container">
+            <div class="row">
+                <div class="sub_title">
+                    <h1>추천 코디 > 상황별</h1>
+                </div>
+                <div class="array">
+                    <ul>
+                        <li>최신순</li>
+                        <li>오래된순</li>
+                    </ul>
+                </div>          
+                <div class="photo-5">
+                    <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
+                    <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
+                    <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
+                    <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
+                    <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
+                </div>
+            </div>
+            <hr id = "choice">
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div id="footer_infor">
+            <div class="container">
+                <div class="row">
+                    <div class="footer_infor">
+                        <ul>
+                            <li><a href="#">홈페이지 이용약관</a></li>
+                            <li><a href="#">개인정보 취급방침</a></li>
+                            <li><a href="#">게시물 게재일칙</a></li>
+                        </ul>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- 자바스크립트 라이브러리 -->
+    <script src="assets/js/jquery.min_1.12.4.js"></script>
+    <script src="assets/js/modernizr-custom.js">
+    </script>
+    <script src="assets/js/ie-checker.js"></script>
+    <!-- 자바스크립트 코드-->
+    <script>
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+/* Set the width of the side navigation to 250px */
+$('#sidebarCollapse').on('click', function () {
+    $('#sidebar').addClass('active');
+    $('.overlay').fadeIn();
+});
+
+$('.overlay').on('click', function () {
+    $('#sidebar').removeClass('active');
+    $('.overlay').fadeOut();
+});
+
+$('.closebtn').on('click', function () {
+    $('#sidebar').removeClass('active');
+    $('.overlay').fadeOut();
+});
+    </script>
+</body></html>
