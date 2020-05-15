@@ -17,9 +17,17 @@
     <!-- 스타일 시트-->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+    
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
 </head>
 
 <body>
+    <div id=load></div>
    <div class="overlay">
        
    </div>
@@ -41,6 +49,17 @@
                             </a>
                         </em>
                     </h1>
+                    <div class="login" id="login">
+                        <a href="../../login/">로그인</a>
+                        <a href="../../signup">회원가입</a>
+                    </div>
+                    <div class="login_after login_session" id="login_session">
+                        <ul>
+                            <li id='hellonick'>?? 환영합니다</li>
+                            <li><a href="#">정보수정</a></li>
+                            <li><a href="#" onclick="logout()">로그아웃</a></li>
+                        </ul>
+                    </div>
                     <div class="search" id="sc">
                         <input class="search__input" type="text" placeholder="Search">
                         <input class="search__btn" type="button">
@@ -53,6 +72,7 @@
             <a href="#">코디 Photo</a>
             <a href="#">이상형 월드컵</a>
             <a href="#">코디 추천</a>
+            <div class="login_session" id='logprofile'><a id="href_profile">프로필</a></div>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -70,16 +90,13 @@
                     <h1>추천 코디 > 날씨별</h1>
                 </div>
                 <div class="array">
-                    <ul>
-                        <li>최신순</li>
-                        <li>오래된순</li>
-                    </ul>
+
                 </div>          
                 <div class="photo-5">
-                    <figure><a href="#"><img src="assets/img/spring.jpg"></a></figure>
-                    <figure><a href="#"><img src="assets/img/summer.jpg"></a></figure>
-                    <figure><a href="#"><img src="assets/img/fall.jpg"></a></figure>
-                    <figure><a href="#"><img src="assets/img/winter.jpg"></a></figure>
+                    <figure><a href="./choice/?season=spring"><img src="assets/img/spring.jpg"></a></figure>
+                    <figure><a href="./choice/?season=summer"><img src="assets/img/summer.jpg"></a></figure>
+                    <figure><a href="./choice/?season=fall"><img src="assets/img/fall.jpg"></a></figure>
+                    <figure><a href="./choice/?season=winter"><img src="assets/img/winter.jpg"></a></figure>
                 </div>
             </div>
             <hr id = "choice">
@@ -126,5 +143,70 @@ $('.closebtn').on('click', function () {
     $('#sidebar').removeClass('active');
     $('.overlay').fadeOut();
 });
+
+//Vue JS
+
+//불러올때
+let load = new Vue({
+    el: "#load",
+    mounted : function() {
+        this.onload();
+
+    },
+    data : {
+
+
+    },
+    methods : {
+        onload : function() {
+                axios.post('http://121.1.71.52:3333/node/login/check').then(response => {
+                    console.log(response.data);
+                    if(response.data.nick_name != undefined) {
+                        document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
+
+                        let login = document.getElementById('login');
+                        login.style.display = 'none';
+
+                        let login_session = document.getElementById('login_session');
+                        login_session.style.display = 'block';
+
+                        let profile = document.getElementById('logprofile');
+                        profile.style.display = 'block';
+
+                        $('#href_profile').attr('href', '../../profile/?id=' + response.data.user_id);
+
+                    }
+                });
+        },
+    }
+});
+
+
+function logout() {
+
+if(confirm('로그아웃 하시겠습니까?')) {
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'http://121.1.71.52:3333/node/login/logout');
+    xhr.send();
+    xhr.addEventListener('load', function() {
+                console.log(xhr.response);
+    });
+
+
+    let login = document.getElementById('login');
+    login.style.display = 'block';
+
+    let login_session = document.getElementById('login_session');
+    login_session.style.display = 'none';
+
+    let profile = document.getElementById('logprofile');
+    profile.style.display = 'none';
+
+    window.location.reload()              
+  }  
+}
+
     </script>
 </body></html>

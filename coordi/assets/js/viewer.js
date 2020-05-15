@@ -42,7 +42,6 @@
             modal.left = ((viewport.width - modal.width) / 2) + "px";
             $selector.Modal.css(modal);
            
-
         }
 
         // view 보이기

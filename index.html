@@ -78,7 +78,7 @@
             <a href="http://121.1.71.52:3333/coordi/">코디 Photo</a>
             <a href="#">이상형 월드컵</a>
             <a href="#">코디 추천</a>
-            <div class="login_session" id='logprofile'><a href="#">프로필</a></div>
+            <div class="login_session" id='logprofile'><a id="href_profile">프로필</a></div>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -292,6 +292,8 @@ window.onpageshow = function(event) {
 
                         let profile = document.getElementById('logprofile');
                         profile.style.display = 'block';
+                        $('#href_profile').attr('href', '/profile/?id=' + response.data.user_id);
+
                     }
                 });                
             },
@@ -348,7 +350,7 @@ window.onpageshow = function(event) {
                 });                            
             }
         }
-    })
+    });
     
 </script>
 </body></html>

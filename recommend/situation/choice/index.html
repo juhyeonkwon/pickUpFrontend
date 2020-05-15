@@ -88,7 +88,7 @@
         <div class="container" id="vue">
             <div class="row">
                 <div class="sub_title">
-                    <h1 id="sub_season">추천 코디 > 날씨별 </h1>
+                    <h1 id="sub_situation">추천 코디 > 상황별 </h1>
                 </div>
                 <div class="array">
                     <ul>
@@ -180,7 +180,7 @@ $('.closebtn').on('click', function () {
 
 
 
-//파라미터값을 가져옵니다 id = ?    
+//파라미터값을 가져옵니다 situation = ?    
 function getUrlParams() {
     let params = {};
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
@@ -244,10 +244,9 @@ let vue = new Vue({
         tag : '',       
     },
     methods : {
-        onload : function() {
-            
-            let season = this.switchKor()
-            axios.post('http://121.1.71.52:3333/node/recommend/season', {num : this.num, season : season}).then(response => {
+        onload : function() {            
+            let situation = this.switchKor()
+            axios.post('http://121.1.71.52:3333/node/recommend/situation', {num : this.num, situation : situation}).then(response => {
                     this.coordis = response.data;
 
                     for(let i = 0 ; i < this.coordis.length; i++) {
@@ -256,13 +255,12 @@ let vue = new Vue({
                 });
         },
         switchKor : function() {
+            //상황이 추가될시 여기서 추가 하면 됩니다...!
             let params = getUrlParams();
-            switch(params.season) {
-                case 'spring' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 봄"; return '봄'; break;
-                case 'summer' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 여름"; return '여름'; break;
-                case 'fall' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 가을"; return '가을'; break;
-                case 'winter' : document.getElementById("sub_season").innerText = "추천 코디 > 날씨별 > 겨울"; return '겨울'; break;
-                default : return '에러'; break ;
+            switch(params.situation) {
+                case 'date' : document.getElementById("sub_situation").innerText = "추천 코디 > 상황별 > 데이트"; return '데이트'; break;
+                case 'interview' : document.getElementById("sub_situation").innerText = "추천 코디 > 상황별 > 면접"; return '면접'; break;
+                default : alert('잘못된 접근입니다'); history.go(-1); return '에러'; break ;
             }
         },
         detail : function(coordi) {
@@ -297,7 +295,7 @@ let vue = new Vue({
 });
 
 
-
+//로그아웃
 function logout() {
 
 if(confirm('로그아웃 하시겠습니까?')) {

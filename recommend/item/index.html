@@ -42,10 +42,16 @@
                             </a>
                         </em>
                     </h1>
-                    <div class="login">
-                        <a href="#">로그인</a>
-                        <a href="#">ID/PW찾기</a>
-                        <a href="#">회원가입</a>
+                    <div class="login" id="login">
+                        <a href="../../login/">로그인</a>
+                        <a href="../../signup">회원가입</a>
+                    </div>
+                    <div class="login_after login_session" id="login_session">
+                        <ul>
+                            <li id='hellonick'>?? 환영합니다</li>
+                            <li><a href="#">정보수정</a></li>
+                            <li><a href="#" onclick="logout()">로그아웃</a></li>
+                        </ul>
                     </div>
                     <div class="search" id="sc">
                         <input class="search__input" type="text" placeholder="Search">
@@ -54,11 +60,12 @@
                 </div>
             </div>
         </div>
-        <div id="sidebar" class="sidenav">
+          <div id="sidebar" class="sidenav">
             <a class="closebtn">&times;</a>
             <a href="#">코디 Photo</a>
             <a href="#">이상형 월드컵</a>
             <a href="#">코디 추천</a>
+            <div class="login_session" id='logprofile'><a id="href_profile">프로필</a></div>
             <a href="#">Contact</a>
         </div>
     </header>
