@@ -96,11 +96,12 @@
                         <li>오래된순</li>
                     </ul>
                 </div>          
-                <div class="photo">
-                    <figure v-for="coordi in coordis" class="item" v-on:click="detail(coordi.coordi_id)">
+                <div class="photo clearfix">
+                    <ul>
+                    <li v-for="coordi in coordis" class="item" v-on:click="detail(coordi.coordi_id)">
                         <img :src="coordi.file"></a>
-                    </figure>
-
+                    </li>
+                </ul>
                 </div>
             </div>
             <hr id = "choice">
