@@ -232,7 +232,8 @@ var photo = new Vue({
             file : '',
             nick_name : '',
             email : '',
-            tag : '',            
+            tag : '',
+            memo : '',            
         },
         methods : {
             onload : function() {
@@ -271,6 +272,7 @@ var photo = new Vue({
                 this.file = 'http://121.1.71.52:3000/coordi/' + response.data[0].file;
                 this.nick_name = response.data[0].nick_name;
                 this.email = '(' + response.data[0].email + ')';
+                this.memo = response.data[0].memo;
                 this.tag = '';
 
 

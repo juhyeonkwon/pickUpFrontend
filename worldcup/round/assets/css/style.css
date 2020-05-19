@@ -705,20 +705,40 @@ photo4 clearfix
 .photo-5 figure:last-child{margin-right: 0px;}
 
 
-/*round*/
-
-.round_modal {
-    display:none;
-    position: fixed;
-    width: 20%;
-    left: 40%;
-    height: 20%;
-    top:30%;
-    overflow: hidden;
-    z-index: 999;
-    /* decoration */
-    border: 1px solid #000;
-    background-color: white;
-    padding: 1em;
-    box-sizing: border-box;
+/* 라운드 */
+#round {
+    width : 50%;
+    text-align: center;
+    margin : 0 auto;
 }
+
+#round .select_round {
+    margin : 0 auto;
+    text-align : center;
+    width: 30%;
+    padding: 14px 18px;
+    border: solid gray 1px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 16px;
+}
+
+#submit {
+    background-color: #3381e8;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+#submit:hover {
+    background-color: white; /* Green */
+    color: black;
+    border : 1px solid #3381e8
+  }
+
