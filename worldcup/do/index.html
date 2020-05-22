@@ -94,8 +94,8 @@
                     <em>{{round_number}}</em>
                 </div>
                 <div class="world-photo">
-                    <figure><img :src="coordis[coordi_number].file" v-on:click="clicked(coordis[coordi_number])"></figure>
-                    <figure><img :src="coordis[coordi_number+1].file" v-on:click="clicked(coordis[coordi_number+1])"></figure>
+                    <figure ><img :src="coordis[coordi_number].file" v-on:click="clicked(coordis[coordi_number])" style="cursor: pointer;"></figure>
+                    <figure ><img :src="coordis[coordi_number+1].file" v-on:click="clicked(coordis[coordi_number+1])" style="cursor: pointer;"></figure>
                 </div>
                 <div class = "cup">위 사진들을 보고 둘 중 하나를 골라주세요!</div>
                 <hr id = "choice"> 
