@@ -43,7 +43,7 @@
                             <img src="assets/img/btn_category.png" alt="카테고리">
                         </span>
                         <em class="logo">
-                            <a href=#>
+                            <a href='../../'>
                                 <strong>옷 좀 골라줄래?</strong>
                                 <em>
                                     Can you pick some clothes?
@@ -70,11 +70,12 @@
                 </div>
             </div>
         </div>
-          <div id="sidebar" class="sidenav">
+        <div id="sidebar" class="sidenav">
             <a class="closebtn">&times;</a>
-            <a href="#">코디 Photo</a>
-            <a href="#">이상형 월드컵</a>
-            <a href="#">코디 추천</a>
+            <a href="../../coordi/">코디 Photo</a>
+            <a href="../../worldcup/">이상형 월드컵</a>
+            <a href="../../recommend/">코디 추천</a>
+            <div class="login_session" id='logprofile'><a id="href_profile">프로필</a></div>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -89,7 +90,7 @@
         <div class="container">
             <div class="row">
                 <div class="worldcup_b">
-                    <strong>최고의 데이트룩은?</strong>
+                    <strong v-model="best_val">{{best_val}}</strong>
                     <em>{{round_number}}</em>
                 </div>
                 <div class="world-photo">
@@ -153,7 +154,7 @@ if(confirm('로그아웃 하시겠습니까?')) {
 
     let xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'http://121.1.71.52:3333/node/login/logout');
+    xhr.open('POST', 'http://124.153.233.204:3333/node/login/logout');
     xhr.send();
     xhr.addEventListener('load', function() {
                 console.log(xhr.response);
@@ -188,7 +189,7 @@ let load = new Vue({
     },
     methods : {
         onload : function() {
-                axios.post('http://121.1.71.52:3333/node/login/check').then(response => {
+                axios.post('http://124.153.233.204:3333/node/login/check').then(response => {
                     console.log(response.data);
                     if(response.data.nick_name != undefined) {
                         document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
@@ -238,6 +239,7 @@ let vue = new Vue({
 
         round : '',                 //몇강
         situation : '',             //상황
+        eng_situation : '',         //eng
         coordis : '',               //코디값을 저장
         coordi_number : 0,          //배열 index용 넘버
 
@@ -246,13 +248,16 @@ let vue = new Vue({
         //선택이 된 코디들의 데이터들을 저장하는 배열
         selected : new Array(),
 
+        //최고의 ?? 은?
+        best_val : ''
+
     },
     methods : {
         //영어로 들어온 situation 값을 한글로 변경을 합니다. 상황이 추가가 될시 추가를 하시면 됩니다
         changeKor :function(eng) {
             switch(eng){
-                case 'date' : return '데이트';
-                case 'interview' : return '면접';
+                case 'date' : this.best_val = '최고의 데이트룩은 ?'; return '데이트';
+                case 'interview' : this.best_val = '최고의 면접룩은?'; return '면접';
                 default : break;
             }
         },
@@ -271,14 +276,16 @@ let vue = new Vue({
                 this.round_number = '1/8'
             }
 
+            this.eng_situation = params.situation;
             this.situation = this.changeKor(params.situation);
 
+
             //서버에서 코디들을 가져옵니다
-            axios.post('http://121.1.71.52:3333/node/worldcup', {situation : this.situation, num : this.round}).then(response => {
+            axios.post('http://124.153.233.204:3333/node/worldcup', {situation : this.situation, num : this.round}).then(response => {
                 this.coordis = response.data
 
                 for(let i = 0 ; i < this.coordis.length; i++) {
-                    this.coordis[i].file = 'http://121.1.71.52:3000/coordi/' + this.coordis[i].file;
+                    this.coordis[i].file = 'http://124.153.233.204:3000/coordi/' + this.coordis[i].file;
                 }               
             });
         },
@@ -302,7 +309,7 @@ let vue = new Vue({
 
             //만약 결승전에서 선택이 된다면 그 코디는 우승한 코디가 되어 우승 페이지로 넘어가게 합니다
             if(this.round == 2) {
-                location.href = "../result/?" + btoa('coordi_id=' + coordi.coordi_id);
+                location.href = "../result/?situation=" + this.eng_situation + "&" + btoa('coordi_id=' + coordi.coordi_id);
             }
 
 
@@ -347,7 +354,7 @@ let vue = new Vue({
         },
         score : function(coordi) {
             //해당 코디의 점수를 증가시키는 함수입니다.
-            axios.post('http://121.1.71.52:3333/node/worldcup/score', {coordi_id : coordi.coordi_id}).then(response => {
+            axios.post('http://124.153.233.204:3333/node/worldcup/score', {coordi_id : coordi.coordi_id}).then(response => {
                 console.log(response.data);
             })
         },

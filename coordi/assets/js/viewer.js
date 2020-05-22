@@ -58,7 +58,11 @@
         function hideView() {
             $selector.overlay.fadeOut();
             $selector.body.removeClass("modal_on");
-            $selector.Modal.hide()
+            $selector.Modal.hide();
+
+            $('.modal .img').on('click',function(){
+                $('.modal .img .memo').toggle();
+            });
         }
 
     })();

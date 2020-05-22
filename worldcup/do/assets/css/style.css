@@ -640,14 +640,25 @@ photo4 clearfix
 }
 
 .world-photo figure{
+    position: relative;
     float:left; 
     margin-right:4%;
     margin-bottom: 30px;
     border: 1px solid black;
     width:600px;
     height : 830px;
+    background-color: #333;
 }
-
+.world-photo figure>img{
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 .world-photo-r{
     overflow: hidden;
 }

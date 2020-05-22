@@ -654,13 +654,27 @@ photo4 clearfix
 
 .world-photo-r figure{
     float: left;
+    position: relative;
     vertical-align:middle;
     margin-right:4%;
     border: 1px solid black;
     width:400px;
     height : 600px;
+    background-color: #333;
     
 }
+.world-photo-r figure>img{
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    display: block;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 .world-photo figure:last-child{margin-right: 0px;}
 
 #choice{

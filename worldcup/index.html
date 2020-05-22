@@ -42,7 +42,7 @@
                         <img src="assets/img/btn_category.png" alt="카테고리">
                     </span>
                     <em class="logo">
-                        <a href=#>
+                        <a href='../'>
                             <strong>옷 좀 골라줄래?</strong>
                             <em>
                                 Can you pick some clothes?
@@ -71,9 +71,9 @@
     </div>
       <div id="sidebar" class="sidenav">
         <a class="closebtn">&times;</a>
-        <a href="#">코디 Photo</a>
-        <a href="#">이상형 월드컵</a>
-        <a href="#">코디 추천</a>
+        <a href="../coordi/">코디 Photo</a>ss
+        <a href="../worldcup/">이상형 월드컵</a>
+        <a href="../recommend/">코디 추천</a>
         <div class="login_session" id='logprofile'><a id="href_profile">프로필</a></div>
         <a href="#">Contact</a>
     </div>
@@ -96,7 +96,7 @@
                 </div>          
                 <div class="photo-5">
                     <figure><a href="./round/?situation=date"><img src="assets/img/date.jpg"></a></figure>
-                    <figure><a href="./choice/?situation=interview"><img src="assets/img/interview.jpg"></a></figure>
+                    <figure><a href="./round/?situation=interview"><img src="assets/img/interview.jpg"></a></figure>
                     <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
                     <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
                     <figure><a href="#"><img src="assets/img/noimage.jpg"></a></figure>
@@ -159,7 +159,7 @@ if(confirm('로그아웃 하시겠습니까?')) {
 
     let xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'http://121.1.71.52:3333/node/login/logout');
+    xhr.open('POST', 'http://124.153.233.204:3333/node/login/logout');
     xhr.send();
     xhr.addEventListener('load', function() {
                 console.log(xhr.response);
@@ -194,7 +194,7 @@ let load = new Vue({
     },
     methods : {
         onload : function() {
-                axios.post('http://121.1.71.52:3333/node/login/check').then(response => {
+                axios.post('http://124.153.233.204:3333/node/login/check').then(response => {
                     console.log(response.data);
                     if(response.data.nick_name != undefined) {
                         document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
@@ -209,7 +209,7 @@ let load = new Vue({
                         profile.style.display = 'block';
 
                         $('#href_profile').attr('href', '../../profile/?id=' + response.data.user_id);
-
+                     
                     }
                 });
         },

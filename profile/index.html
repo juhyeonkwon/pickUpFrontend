@@ -28,6 +28,7 @@
 </head>
 
 <body>
+    <div id='vue'></div>
     <div class="overlay">
 
     </div>
@@ -94,7 +95,7 @@
                     </div>
                     <div class="photo2 clearfix">
                         <ul>
-                            <li v-for="coordi in coordis" class="item" v-onclick="detail(coordi.coordi_id)">
+                            <li v-for="coordi in coordis" class="item" v-on:click="detail(coordi.coordi_id)">
                                 <img :src="coordi.file">
                             </li>                           
 
@@ -107,12 +108,12 @@
     </section>
 
     <aside id="modal" class="modal">
-        <a id="hideview" class="closebtn">&times;</a>
+        <a id= "hideview" class="closebtn">&times;</a>
         <div class="infor clearfix">
-            <div class="img">
-                <img src="#">
+            <div class="img" style="cursor:default;">
+               <img src="#" onclick="memo_toggle();">
                 <em class="name">
-                    <a href="#">
+                    <a href="#" id="detail_href">
                         <strong id="detail_nick_name">
                             Banana
                         </strong>
@@ -121,19 +122,31 @@
                         </em>
                     </a>
                 </em>
-
+                <div class="memo">
+                    <div class="memo_infor">
+                        <em id="em_memo">상의:몰라
+                        모자:몰라
+                        신발:몰라
+                        하의:몰라
+                        선글라스 몰라</em>
+                    </div>
+                </div>
             </div>
+        <div class="bottom">
 
             <div class="tag">
                 <img src="assets/img/tag.jpg">
-                <div class="tag_infor">
+                <div class="tag_infor" >
                     <em id="detail_tag">상의 여름 나들이 진갈색</em>
                 </div>
             </div>
-            <div class="btn report"><em>신고</em></div>
-            <div class="btn erase"><em>삭제</em></div>
+            <div id="modal_btn">
+            <div class="btn report" v-on:click="report();"><em>신고</em></div>
+            <div class="btn erase" onclick="btn.delete();"><em>삭제</em></div>
             <div class="btn rewrite"><em>수정</em></div>
+            </div>
         </div>
+    </div>
     </aside>
     <footer id="footer">
         <div id="footer_infor">
@@ -183,7 +196,7 @@ function logout() {
 
         let xhr = new XMLHttpRequest();
 
-        xhr.open('POST', 'http://121.1.71.52:3000/login/logout');
+        xhr.open('POST', 'http://124.153.233.204:3000/login/logout');
         xhr.send();
         xhr.addEventListener('load', function() {
                     console.log(xhr.response);
@@ -217,6 +230,8 @@ function getUrlParams() {
     return params;
 }
 
+let detail_coordi_id;
+
 //vuejs 코드
 var photo = new Vue({
         el: '#profile',
@@ -238,12 +253,12 @@ var photo = new Vue({
         methods : {
             onload : function() {
                 let params = getUrlParams();
-                axios.post('http://121.1.71.52:3000/profile/view', { user_id : params.id}).then(response => {
+                axios.post('http://124.153.233.204:3000/profile/view', { user_id : params.id}).then(response => {
                     console.log(response.data);
                     this.coordis = response.data.rows
 
                     for(let i = 0 ; i < this.coordis.length; i++) {
-                        this.coordis[i].file = 'http://121.1.71.52:3000/coordi/' + this.coordis[i].file;
+                        this.coordis[i].file = 'http://124.153.233.204:3000/coordi/' + this.coordis[i].file;
                     }
                     
                     var select_user = response.data.user[0]
@@ -266,14 +281,20 @@ var photo = new Vue({
                 });
         },
         detail : function(coordi) {
-            let coordi_id = coordi;
-            axios.post('http://121.1.71.52:3000/coordi_func/detail_view', {coordi_id : coordi_id}).then(response => {
+            
+            let coordi_id = coordi; 
+            detail_coordi_id = coordi;
+
+            axios.post('http://124.153.233.204:3000/coordi_func/detail_view', {coordi_id : coordi_id}).then(response => {
                 this.user_id = response.data[0].user_id;
-                this.file = 'http://121.1.71.52:3000/coordi/' + response.data[0].file;
+                this.file = 'http://124.153.233.204:3000/coordi/' + response.data[0].file;
                 this.nick_name = response.data[0].nick_name;
                 this.email = '(' + response.data[0].email + ')';
                 this.memo = response.data[0].memo;
                 this.tag = '';
+                
+                console.log(response.data[0]);
+                console.log(this.memo);
 
 
                 //태그 입력
@@ -287,13 +308,102 @@ var photo = new Vue({
                 this.tag = this.tag + ' ' + response.data[0].color1;
                 this.tag = this.tag + ' ' + response.data[0].color2;
 
-                document.getElementById('detail_tag').innerText = this.tag;
 
+                $('#detail_href').prop('href', 'http://124.153.233.204:3333/profile/index.html?id=' + this.user_id)
+                document.getElementById('detail_nick_name').innerText = this.nick_name;
+                document.getElementById('detail_email').innerText = this.email;
+                document.getElementById('detail_tag').innerText = this.tag;
+                document.getElementById('em_memo').innerText = this.memo;
             });                            
+                    
         }
     }
 });
 
+let vue = new Vue({
+    el : "#vue",
+    mounted : function() {
+        this.onload();
+    },
+    data : {
+
+    },
+    methods : {
+        onload : function() {
+            axios.post('http://124.153.233.204:3333/node/login/check', {page : 'coordi_list'}).then(response => {
+                    console.log(response.data);
+                    if(response.data.nick_name != undefined) {
+                        document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
+
+                        let login = document.getElementById('login');
+                        login.style.display = 'none';
+
+                        let login_session = document.getElementById('login_session');
+                        login_session.style.display = 'block';
+
+                        let profile = document.getElementById('logprofile');
+                        profile.style.display = 'block';
+                    }
+                });
+        }
+    }
+});
+
+
+let btn = new Vue({
+    el : "#modal_btn",
+    data : {
+
+    },
+    methods : {
+        report : function() {
+            axios.post('http://124.153.233.204:3333/node/coordi_func/report', {coordi_id : detail_coordi_id}).then(response => {
+                if(response.data === 1) {
+                    alert('신고가 완료되었습니다.');
+                } else if(response.data === -1) {
+                    alert('이미 신고한 코디 입니다.');
+                } else if(response.data === 'not logged') {
+                    alert('로그인이 필요한 기능입니다.');
+                }
+            })
+        },
+        delete : function() {
+            let conf = confirm('삭제 하시겠습니까?');
+            if(conf === true) {
+                axios.post('http://124.153.233.204:3333/node/coordi_func/delete', {coordi_id : detail_coordi_id}).then(response => {
+                    if(response.data === -1) {
+                        alert('로그인이 필요한 기능입니다.');
+                    } else if(response.data === 0) {
+                        alert('에러가 발생 했습니다.');
+                    } else if(response.data === 1) {
+                        alert('삭제 완료.')
+                        window.location.reload()
+                    }
+                });
+            } else {
+                return ;
+            }
+        }
+    }
+});
+
+window.onpageshow = function(event) {
+    if(event.persisted == true) {
+        window.location.reload()
+    } else {}
+}
+
+
+function memo_toggle() {
+    if(photo.memo === null) {
+        $('.modal .img').off('click');        
+    } else {
+        $('.modal .img').on('click',function(){
+        $('.modal .img .memo').toggle();
+        });
+    }
+
+}
 
 </script>
 
