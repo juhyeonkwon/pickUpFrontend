@@ -92,8 +92,8 @@
                 </div>
                 <div class="array">
                     <ul>
-                        <li>최신순</li>
-                        <li>오래된순</li>
+                        <li v-on:click="order(1);" style="cursor: pointer;">최신순</li>
+                        <li v-on:click="order(0);" style="cursor: pointer;">오래된순</li>
                     </ul>
                 </div>
                 <div class="photo clearfix">
@@ -106,7 +106,11 @@
                 </div>
             </div>
         </div>
+        <div id="more" class="container" v-on:click="more()">
+            <h1>더보기</h1>
+        </div>
     </section>
+
     <section id="upload">
         <div class="container">
             <div class="row">
@@ -225,6 +229,9 @@
         data : {
             num : 1,
             coordis : '',
+           
+            //최신 or old
+             view : true,        //true 시 최신 false 시 오래된순
 
             //상세보기 할때 보여줄것들
             user_id : 0,
@@ -236,13 +243,25 @@
         },
         methods : {
             onload : function() {
-                axios.post('http://124.153.233.204:3333/node/coordi_list', {num : 1}).then(response => {
-                    this.coordis = response.data
+                if(this.view) {
+                    axios.post('http://124.153.233.204:3333/node/coordi_list', {num : 1}).then(response => {
+                        this.num = this.num + 1;
+                        this.coordis = response.data
 
-                    for(let i = 0 ; i < this.coordis.length; i++) {
-                        this.coordis[i].file = 'http://124.153.233.204:3000/coordi/' + this.coordis[i].file;
-                    }                   
-                });                
+                        for(let i = 0 ; i < this.coordis.length; i++) {
+                            this.coordis[i].file = 'http://124.153.233.204:3000/coordi/' + this.coordis[i].file;
+                        }                   
+                    });            
+                } else {
+                    axios.post('http://124.153.233.204:3333/node/coordi_list/old', {num : 1}).then(response => {
+                        this.num = this.num + 1;
+                        this.coordis = response.data
+
+                        for(let i = 0 ; i < this.coordis.length; i++) {
+                            this.coordis[i].file = 'http://124.153.233.204:3000/coordi/' + this.coordis[i].file;
+                        }                   
+                    });
+                }    
         },
         detail : function(coordi) {
             let coordi_id = coordi;
@@ -274,6 +293,47 @@
                 document.getElementById('detail_tag').innerText = this.tag;
                 document.getElementById('em_memo').innerText = this.memo;
             });                            
+        },
+        more : function() {
+            if(this.view) {
+                axios.post('http://124.153.233.204:3333/node/coordi_list', {num : this.num}).then(response => {
+                        this.num = this.num + 1;
+                        let temp = response.data
+
+                        for(let i = 0 ; i < temp.length; i++) {
+                            temp[i].file = 'http://124.153.233.204:3000/coordi/' + temp[i].file;
+                        }
+
+                        for(let i = 0 ; i < temp.length; i++) {
+                            this.coordis.push(temp[i]);
+                        }                   
+                }); 
+            } else {
+                axios.post('http://124.153.233.204:3333/node/coordi_list/old', {num : this.num}).then(response => {
+                        this.num = this.num + 1;
+                        let temp = response.data
+
+                        for(let i = 0 ; i < temp.length; i++) {
+                            temp[i].file = 'http://124.153.233.204:3000/coordi/' + temp[i].file;
+                        }
+
+                        for(let i = 0 ; i < temp.length; i++) {
+                            this.coordis.push(temp[i]);
+                        }                   
+                }); 
+            }
+        },
+        order : function(num) {
+            //최신, 옛날순
+            if(num === 1) {
+                this.view = true;
+                this.num = 1;
+            } else {
+                this.view = false;
+                this.num = 1;
+            }
+
+            this.onload();  
         }
     }
 });
@@ -300,7 +360,7 @@ let btn = new Vue({
             if(conf === true) {
                 axios.post('http://124.153.233.204:3333/node/coordi_func/delete', {coordi_id : detail_coordi_id}).then(response => {
                     if(response.data === -1) {
-                        alert('로그인이 필요한 기능입니다.');
+                        alert('삭제할 수 없는 코디입니다.');
                     } else if(response.data === 0) {
                         alert('에러가 발생 했습니다.');
                     } else if(response.data === 1) {
