@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
 
 <head>
     <meta charset="utf-8">
@@ -15,23 +15,22 @@
    <![endif]-->
     <title>옷좀골라줄래</title>
     <!-- 스타일 시트-->
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/swiper.min.css">
+
     
     
     <!-- vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-
 </head>
 
 <body>
-   <div id="load"></div>
-   <div class="overlay">
-       
-   </div>
+    <div id="vue"></div>
+    <div class="overlay">
+
+    </div>
     <header id="header">
         <div class="container">
             <div class="row">
@@ -50,7 +49,7 @@
                             </a>
                         </em>
                     </h1>
-                    <div class="login" id="login">
+                    <div class="login" id="login" style="display:block;">
                         <a href="../../../login/">로그인</a>
                         <a href="../../../signup/">회원가입</a>
                     </div>
@@ -73,46 +72,312 @@
             <a href="../../../coordi/">코디 Photo</a>
             <a href="../../../worldcup/">이상형 월드컵</a>
             <a href="../../../recommend/">코디 추천</a>
-            <div class="login_session" id='logprofile'><a id="href_profile">프로필</a></div>
+            <div class="login_session" id='logprofile'>
+                <a href="../../../upload/">코디 업로드</a>
+                <a id="href_profile">프로필</a></div>
             <a href="#">Contact</a>
         </div>
     </header>
-    <section id="banner1">
+    <section id="banner">
         <div class="container">
             <div class="row">
                 <img src="assets/img/banner.png">
             </div>
         </div>
     </section>
-    <section id="codi">
-        <div class="container" id="vue">
+    <section id="codi_recommand">
+        <div class="container">
             <div class="row">
-                <div class="sub_title">
-                    <h1 id="sub_situation">추천 코디 > 상황별 </h1>
-                </div>
-                <div class="array">
-                    <ul>
-                        <li>최신순</li>
-                        <li>오래된순</li>
-                    </ul>
-                </div>          
-                <div class="photo clearfix">
-                    <ul>
-                    <li v-for="coordi in coordis" class="item" v-on:click="detail(coordi.coordi_id)">
-                        <img :src="coordi.file"></a>
-                    </li>
-                </ul>
+                <div class="codi_recommand">
+                    <div class="sub_title">
+                        <h1 id="sub_situation">코디 추천</h1>
+                    </div>
+                            <div class="codi_title">
+                             <ul>
+                            <li class="active"><a href="#">일간</a></li>
+                            <li><a href="#">주간</a></li>
+                            <li><a href="#">월간</a></li>
+                        </ul>
+</div>
+                    
+                    <div class="codi_recommand_image">
+                       <!--일간-->
+                        <div class="swiper-container">
+                            <div class="cont1 swiper-wrapper">
+                                <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day1' onclick="load.detail(1, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>1</strong></div>
+                                    </div>
+                                </div>
+                                <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day2' onclick="load.detail(2, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>2</strong></div>
+                                    </div>
+                                </div>
+                                <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day3' onclick="load.detail(3, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>3</strong></div>
+                                    </div>
+                                </div>
+                                <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day4' onclick="load.detail(4, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>4</strong></div>
+                                    </div>
+                                </div>
+                                <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day5' onclick="load.detail(5, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>5</strong></div>
+                                    </div>
+                                </div>
+                                    <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day6' onclick="load.detail(6, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>6</strong></div>
+                                    </div>
+                                </div>
+                                    <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day7' onclick="load.detail(7, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>7</strong></div>
+                                    </div>
+                                </div>
+                                    <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day8' onclick="load.detail(8, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>8</strong></div>
+                                    </div>
+                                </div>
+                                    <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day9' onclick="load.detail(9, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>9</strong></div>
+                                    </div>
+                                </div>
+                                    <div class=" swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id='day10' onclick="load.detail(10, 'day')">
+                                        </div>
+                                        <div class="rank"><strong>10</strong></div>
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <!--주간-->
+                        <div class="swiper-container">
+
+                            <div class="week  swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id="week1" onclick="load.detail(1, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>1</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img  id="week2" onclick="load.detail(2, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>2</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img  id="week3" onclick="load.detail(3, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>3</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img id="week4" onclick="load.detail(4, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>4</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img  id="week5" onclick="load.detail(5, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>5</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img id="week6" onclick="load.detail(6, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>6</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img id="week7" onclick="load.detail(7, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>7</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img id="week8" onclick="load.detail(8, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>8</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img id="week9" onclick="load.detail(9, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>9</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img id="week10" onclick="load.detail(10, 'week')">
+                                        </div>
+                                        <div class="rank"><strong>10</strong></div>
+                                    </div>
+                                </div>
+ 
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div class="swiper-container">
+
+                            <div class="month swiper-wrapper">
+                                                      
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id="month1" onclick="load.detail(1, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>1</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id="month2" onclick="load.detail(2, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>2</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="" id="month3" onclick="load.detail(3, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>3</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="assets/img/surface-C389V--ZZrQ-unsplash.jpg" id="month4" onclick="load.detail(4, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>4</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="assets/img/surface-C389V--ZZrQ-unsplash.jpg" id="month5" onclick="load.detail(5, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>5</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="assets/img/surface-C389V--ZZrQ-unsplash.jpg" id="month6" onclick="load.detail(6, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>6</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="assets/img/surface-C389V--ZZrQ-unsplash.jpg" id="month7" onclick="load.detail(7, 'month');"> 
+                                        </div>
+                                        <div class="rank"><strong>7</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="assets/img/surface-C389V--ZZrQ-unsplash.jpg" id="month8" onclick="load.detail(8, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>8</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="assets/img/surface-C389V--ZZrQ-unsplash.jpg" id="month9" onclick="load.detail(9, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>9</strong></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="codi">
+                                        <div class="item">
+                                            <img src="assets/img/surface-C389V--ZZrQ-unsplash.jpg" id="month10" onclick="load.detail(10, 'month');">
+                                        </div>
+                                        <div class="rank"><strong>10</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                    
+                   
+                    </div> 
                 </div>
             </div>
-            <hr id = "choice">
-        </div>
-    </section>
 
-    <aside id="modal" class="modal">
+    </section>
+    <aside id="modal" class="modal" style="display:none">
         <a id="hideview" class="closebtn">&times;</a>
         <div class="infor clearfix">
-            <div class="img">
-                <img src="#">
+            <div class="img" id="img_modal"style="cursor:default;">
+                <img src="#" onclick="memo_toggle();">
                 <em class="name">
                     <a href="#" id="detail_href">
                         <strong id="detail_nick_name">
@@ -123,21 +388,34 @@
                         </em>
                     </a>
                 </em>
-
-            </div>
-
-            <div class="tag">
-                <img src="assets/img/tag.jpg">
-                <div class="tag_infor">
-                    <em id="detail_tag">상의 여름 나들이 진갈색</em>
+                <div class="memo">
+                    <div class="memo_infor">
+                        <em id="em_memo">상의:몰라
+                        모자:몰라
+                        신발:몰라
+                        하의:몰라
+                        선글라스 몰라</em>
+                    </div>
                 </div>
             </div>
-            <div class="btn report"><em>신고</em></div>
-            <div class="btn erase"><em>삭제</em></div>
-            <div class="btn rewrite"><em>수정</em></div>
+
+            <div class="bottom">
+
+                <div class="tag">
+                    <img src="assets/img/tag.jpg">
+                    <div class="tag_infor" >
+                        <em id="detail_tag">상의 여름 나들이 진갈색</em>
+                    </div>
+                </div>
+                <div id="modal_btn" style="display:none;">
+                <div class="btn report" v-on:click="report()"><em>신고</em></div>
+                <div class="btn erase" id="deleteBtn" style="display:none;" onclick="btn.delete();"><em>삭제</em></div>
+                <div class="btn rewrite" id="modifyBtn" style="display:none;" ><em>수정</em></div>
+            </div>
+            </div>
         </div>
     </aside>
-    
+
     <footer id="footer">
         <div id="footer_infor">
             <div class="container">
@@ -159,29 +437,61 @@
     <script src="assets/js/jquery.min_1.12.4.js"></script>
     <script src="assets/js/modernizr-custom.js"></script>
     <script src="assets/js/ie-checker.js"></script>
-    <script src="assets//js/viwer.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+    <script src="assets/js/viewer.js"></script>
     <!-- 자바스크립트 코드-->
     <script>
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
-/* Set the width of the side navigation to 250px */
-$('#sidebarCollapse').on('click', function () {
-    $('#sidebar').addClass('active');
-    $('.overlay').fadeIn();
-});
+        /*네비게이션 */
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').addClass('active');
+            $('.overlay').fadeIn();
+        });
+        $('.overlay').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+        $('.closebtn').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+        /*코디 뷰 슬라이드 기능*/
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            spaceBetween: 24,
+                  navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+            mousewheel: {
+                invert: true,
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: false,
+            },
+            autoplay: {
+                delay: 6000,
+            },
+        });
+        /*일간 주간 월간*/
+                var movBtn = $(".codi_title > ul > li");
+        var movCont = $(".codi_recommand_image > div");
+        
+        movCont.hide().eq(0).show();
+        
+        movBtn.click(function(e){
+            e.preventDefault();
+            var target = $(this);
+            var index = target.index();
+            movBtn.removeClass("active");
+            target.addClass("active");
+            movCont.css("display","none");
+            movCont.eq(index).css("display","block");
+        });
+    </script>
 
-$('.overlay').on('click', function () {
-    $('#sidebar').removeClass('active');
-    $('.overlay').fadeOut();
-});
-
-$('.closebtn').on('click', function () {
-    $('#sidebar').removeClass('active');
-    $('.overlay').fadeOut();
-});
-
-
-
-//파라미터값을 가져옵니다 situation = ?    
+    <script>
+        //파라미터값을 가져옵니다 situation = ?    
 function getUrlParams() {
     let params = {};
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
@@ -193,22 +503,39 @@ function getUrlParams() {
 vuejs
 */
 
+//삭제,수정 등 하기위한 변수
+let detail_coordi_id;
+
 //불러올때
 let load = new Vue({
-    el: "#load",
+    el: "#vue",
     mounted : function() {
+        this.coordi_load();
         this.onload();
-
     },
     data : {
+        logined_user_id : '',
+        coordis : '',
+        week_coordis : '',
+        month_coordis: '',
+        num : 1,
 
-
+                    //상세보기 할때 보여줄것들
+        user_id : 0,
+        file : '',
+        nick_name : '',
+        email : '',
+        tag : '',  
+        memo : '',
     },
     methods : {
         onload : function() {
                 axios.post('http://124.153.233.204:3333/node/login/check').then(response => {
                     console.log(response.data);
                     if(response.data.nick_name != undefined) {
+                        document.getElementById("modal_btn").style.display = "block";
+                        this.logined_user_id = response.data.user_id;
+
                         document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
 
                         let login = document.getElementById('login');
@@ -221,39 +548,34 @@ let load = new Vue({
                         profile.style.display = 'block';
                         
                         $('#href_profile').attr('href', '../../../profile/?id=' + response.data.user_id);
-
                     }
-                });
+                }).catch(error => { console.log('con err')});
         },
-    }
-});
-
-let vue = new Vue({
-    el: "#vue",
-    mounted : function() {
-        this.onload();
-    },
-    data : {
-        num : 1,
-        coordis : '',
-
-        //상세보기 할때 보여줄것들
-        user_id : 0,
-        file : '',
-        nick_name : '',
-        email : '',
-        tag : '',       
-    },
-    methods : {
-        onload : function() {            
+        coordi_load : function() {            
             let situation = this.switchKor()
             axios.post('http://124.153.233.204:3333/node/recommend/situation', {num : this.num, situation : situation}).then(response => {
-                    this.coordis = response.data;
+                    this.coordis = response.data.day;
+                    this.week_coordis = response.data.week;
+                    this.month_coordis = response.data.month;
 
+                    console.log(response.data);
                     for(let i = 0 ; i < this.coordis.length; i++) {
                         this.coordis[i].file = 'http://124.153.233.204:3000/coordi/' + this.coordis[i].file;
-                    }                   
-                });
+                        $('#day' + (i + 1)).attr('src', this.coordis[i].file);
+
+                    }
+
+                    for(let k = 0 ; k < this.coordis.length; k++) {
+                        this.week_coordis[k].file = 'http://124.153.233.204:3000/coordi/' + this.week_coordis[k].file;
+                        $('#week' + (k + 1)).attr('src', this.week_coordis[k].file);
+                    }
+
+                    for(let j = 0 ; j < this.coordis.length; j++) {
+                        this.month_coordis[j].file = 'http://124.153.233.204:3000/coordi/' + this.month_coordis[j].file;
+                        $('#month' + (j + 1)).attr('src', this.month_coordis[j].file);
+                    }
+          
+            });        
         },
         switchKor : function() {
             //상황이 추가될시 여기서 추가 하면 됩니다...!
@@ -263,40 +585,114 @@ let vue = new Vue({
                 case 'interview' : document.getElementById("sub_situation").innerText = "추천 코디 > 상황별 > 면접"; return '면접'; break;
                 default : alert('잘못된 접근입니다'); history.go(-1); return '에러'; break ;
             }
+        }, 
+        detail : function(coordi_num, kind) {
+            let coordi_id;
+            if(kind === "day") {
+                coordi_id = this.coordis[coordi_num-1].coordi_id;
+            } else if(kind === "week") {
+                coordi_id = this.week_coordis[coordi_num - 1].coordi_id;
+            } else if(kind === "month") {
+                coordi_id = this.month_coordis[coordi_num - 1].coordi_id;
+            }
+
+            detail_coordi_id = coordi_id;
+
+                axios.post('http://124.153.233.204:3333/node/coordi_func/detail_view', {coordi_id : coordi_id}).then(response => {
+                    this.user_id = response.data[0].user_id;
+                    this.file = 'http://124.153.233.204:3000/coordi/' + response.data[0].file;
+                    this.nick_name = response.data[0].nick_name;
+                    this.email = '(' + response.data[0].email + ')';
+                    this.tag = '';
+                    this.memo = response.data[0].memo;
+
+                    if(this.memo === null || this.memo === '') {
+                        document.getElementById("img_modal").style.cursor = "default";
+                    } else {
+                        document.getElementById("img_modal").style.cursor = "pointer";
+                    }
+
+                    if(this.logined_user_id === this.user_id) {
+                        document.getElementById('deleteBtn').style.display = "block";
+                        document.getElementById('modifyBtn').style.display = "block";
+                    }
+
+                    //태그 입력
+                    this.tag = this.tag + response.data[0].item1;
+                    this.tag = this.tag + ' ' + response.data[0].item2;
+                    this.tag = this.tag + ' ' + response.data[0].item3;
+                    this.tag = this.tag + ' ' + response.data[0].season1;
+                    if(response.data[0].season2 != null) this.tag = this.tag + ' ' + response.data[0].season2;
+                    this.tag = this.tag + ' ' + response.data[0].situation1;
+                    if(response.data[0].situation2 != null) this.tag = this.tag + ' ' + response.data[0].situation2;
+                    this.tag = this.tag + ' ' + response.data[0].color1;
+                    if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
+                    if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
+
+                    document.getElementById('detail_tag').innerText = this.tag;
+                    $('#detail_href').prop('href', 'http://124.153.233.204:3333/profile/index.html?id=' + this.user_id)
+                    document.getElementById('detail_nick_name').innerText = this.nick_name;
+                    document.getElementById('detail_email').innerText = this.email;
+                    document.getElementById('detail_tag').innerText = this.tag;
+                    document.getElementById('em_memo').innerText = this.memo;
+
+                });                            
+            }
+    }
+});
+
+
+//버튼 함수들
+let btn = new Vue({
+    el : "#modal_btn",
+    data : {
+
+    },
+    methods : {
+        report : function() {
+            axios.post('http://124.153.233.204:3333/node/coordi_func/report', {coordi_id : detail_coordi_id}).then(response => {
+                if(response.data === 1) {
+                    alert('신고가 완료되었습니다.');
+                } else if(response.data === -1) {
+                    alert('이미 신고한 코디 입니다.');
+                } else if(response.data === 'not logged') {
+                    alert('로그인이 필요한 기능입니다.');
+                }
+            })
         },
-        detail : function(coordi) {
-            let coordi_id = coordi;
-            axios.post('http://124.153.233.204:3000/coordi_func/detail_view', {coordi_id : coordi_id}).then(response => {
-                console.log(response.data);
-                this.user_id = response.data[0].user_id;
-                this.file = 'http://124.153.233.204:3000/coordi/' + response.data[0].file;
-                this.nick_name = response.data[0].nick_name;
-                this.email = '(' + response.data[0].email + ')';
-                this.tag = '';
-
-
-                //태그 입력
-                this.tag = this.tag + response.data[0].item1;
-                this.tag = this.tag + ' ' + response.data[0].item2;
-                this.tag = this.tag + ' ' + response.data[0].item3;
-                this.tag = this.tag + ' ' + response.data[0].season1;
-                this.tag = this.tag + ' ' + response.data[0].season2;
-                this.tag = this.tag + ' ' + response.data[0].situation1;
-                this.tag = this.tag + ' ' + response.data[0].situation2;
-                this.tag = this.tag + ' ' + response.data[0].color1;
-                this.tag = this.tag + ' ' + response.data[0].color2;
-
-                $('#detail_href').prop('href', 'http://124.153.233.204:3333/profile/index.html?id=' + this.user_id)
-                document.getElementById('detail_nick_name').innerText = this.nick_name;
-                document.getElementById('detail_email').innerText = this.email;
-                document.getElementById('detail_tag').innerText = this.tag;
-            });                            
+        delete : function() {
+            let conf = confirm('삭제 하시겠습니까?');
+            if(conf === true) {
+                axios.post('http://124.153.233.204:3333/node/coordi_func/delete', {coordi_id : detail_coordi_id}).then(response => {
+                    if(response.data === -1) {
+                        alert('삭제할 수 없습니다.');
+                    } else if(response.data === 0) {
+                        alert('에러가 발생 했습니다.');
+                    } else if(response.data === 1) {
+                        alert('삭제 완료.')
+                        window.location.reload()
+                    }
+                });
+            } else {
+                return ;
+            }
         }
     }
 });
 
 
-//로그아웃
+function memo_toggle() {
+    if(load.memo === null || load.memo === '') {
+        $('.modal .img').off('click');        
+    } else {
+        $('.modal .img').on('click',function(){
+        $('.modal .img .memo').toggle();
+        });
+    }
+
+}
+
+
 function logout() {
 
 if(confirm('로그아웃 하시겠습니까?')) {
@@ -324,5 +720,16 @@ if(confirm('로그아웃 하시겠습니까?')) {
 }
 
 
+
+
+//safari 브라우저 문제 해결..
+
+window.onpageshow = function(event) {
+    if(event.persisted == true) {
+        window.location.reload()
+    } else {}
+}
+
     </script>
+
 </body></html>

@@ -79,7 +79,9 @@
             <a href="../../../coordi/">코디 Photo</a>
             <a href="../../../worldcup/">이상형 월드컵</a>
             <a href="../../../recommend/">코디 추천</a>
-            <div class="login_session" id='logprofile'><a id="href_profile">프로필</a></div>
+            <div class="login_session" id='logprofile'>
+                <a href="../../../upload/">코디 업로드</a>
+                <a id="href_profile">프로필</a></div>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -102,9 +104,9 @@
                 <div id="input_category">                    
                     <label>카테고리</label>
                     <select class="select" v-model="category">
-                        <option>미니 원피스</option>
-                        <option>미디 원피스</option>
-                        <option>맥심 원피스</option>
+                        <option>미니원피스</option>
+                        <option>미디원피스</option>
+                        <option>맥심원피스</option>
                         <option>점프수트</option>
                     </select>
                     <br />
@@ -290,7 +292,7 @@ let load = new Vue({
 let input_category = new Vue({
     el: '#input_category',
     data : {
-        category : '미니 원피스',
+        category : '미니원피스',
         color : 'black'
     },
     methods : {
