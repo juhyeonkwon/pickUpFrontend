@@ -51,7 +51,7 @@
                             </a>
                         </em>
                     </h1>
-                    <div class="login">
+                    <div class="login" id="login_menu">
                         <a href="../login/">로그인</a>
                         <a href="../signup/">회원가입</a>
                     </div>
@@ -145,6 +145,23 @@
     <script src="assets/js/jquery.min_1.12.4.js"></script>
     <script src="assets/js/modernizr-custom.js"></script>
     <script src="assets/js/ie-checker.js"></script>
+
+    <script>
+        /*네비게이션 */
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').addClass('active');
+            $('.overlay').fadeIn();
+        });
+        $('.overlay').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+        $('.closebtn').on('click', function() {
+            $('#sidebar').removeClass('active');
+            $('.overlay').fadeOut();
+        });
+    </script>
+
     <!-- 자바스크립트 코드-->
     <script type="text/javascript">
         $(document).ready(function() {
@@ -180,11 +197,13 @@
                     },
                     opassword: {
                         required: true,
-                        minlength: 6
+                        minlength: 6,
+                        maxlength : 30
                     },
                     rptpassword: {
                         required: true,
                         minlength: 6,
+                        maxlength : 30,
                         equalTo: "#opassword"
                     },                    
                 },
@@ -200,12 +219,15 @@
                     },
                     opassword: {
                         required: "비밀번호를 입력해 주세요",
-                        minlength: "비밀번호는 6자 이상 입니다"
+                        minlength: "비밀번호는 6자 이상 입니다",
+                        maxlength: "비밀번호는 30자 이하 입니다"
                     },
                     rptpassword: {
                         required: "비밀번호를 입력해 주세요",
                         minlength: " ",
-                        equalTo: "비밀번호가 일치하지 않습니다"
+                        equalTo: "비밀번호가 일치하지 않습니다",
+                        maxlength: "비밀번호는 30자 이하 입니다"
+
                     },
 
                     nickname: {

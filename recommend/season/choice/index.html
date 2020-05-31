@@ -440,6 +440,7 @@
     <script src="assets/js/swiper.min.js"></script>
     <script src="assets/js/viewer.js"></script>
     <!-- 자바스크립트 코드-->
+    <!-- 자바스크립트 코드-->
     <script>
         /*네비게이션 */
         $('#sidebarCollapse').on('click', function() {
@@ -472,6 +473,20 @@
             autoplay: {
                 delay: 6000,
             },
+             breakpoints: {
+                 600: {
+                    slidesPerView: 1.4,
+                    spaceBetween: 24
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 24
+                },
+                960: {
+                    slidesPerView: 3,
+                    spaceBetween: 24
+                }
+            }
         });
         /*일간 주간 월간*/
                 var movBtn = $(".codi_title > ul > li");

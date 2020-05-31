@@ -5,7 +5,7 @@
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    
+
 }
 
 
@@ -27,7 +27,7 @@
 
 #footer {
     background-color: rgba(238, 238, 238, 255);
-    width:100%;
+    width: 100%;
 }
 
 /*헤더 영역 */
@@ -38,7 +38,7 @@
 
 .header h1 img {
     width: 62px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .header .logo {
@@ -63,32 +63,38 @@
     color: #94b8f3;
     font-family: "Gungsuh", "궁서";
 }
+
 /*로그인 회원가입 버튼*/
-.login{
+.login {
     position: absolute;
-    right:250px;
-    bottom:8px;
+    right: 250px;
+    bottom: 8px;
     display: none;
 }
-.login a{
+
+.login a {
     margin-right: 10px;
-    font-size:13px;
+    font-size: 13px;
 }
-.login_after{
-    position:absolute;
+
+.login_after {
+    position: absolute;
     right: 250px;
-    bottom:8px;
-    
+    bottom: 8px;
+
 }
-.login_after li{
+
+.login_after li {
     display: inline;
     position: relative;
     padding-right: 5px;
     white-space: nowrap;
 }
-.login_session{
+
+.login_session {
     display: none;
 }
+
 /*검색 시작*/
 .search__input {
     width: 170px;
@@ -116,9 +122,9 @@
 
 .search {
     overflow: hidden;
-    position:absolute;
-    bottom:4px;
-    right:10px;
+    position: absolute;
+    bottom: 4px;
+    right: 10px;
     width: 200px;
     height: 19px;
     padding: 5px 11px;
@@ -161,31 +167,25 @@
 /* The side navigation menu */
 .sidenav {
     height: 100%;
-    /* 100% Full-height */
-    width: 250px;
+    width: 0;
     position: fixed;
-    /* Stay in place */
-    z-index: 999;
-    /* Stay on top */
+    z-index: 1001;
     top: 0;
-    /* Stay at the top */
-    left: -250px;
+    left: 0;
+    padding-top:60px;
     background-color: #111;
-    /* Black*/
     overflow-x: hidden;
-    /* Disable horizontal scroll */
-    padding-top: 60px;
-    /* Place content 60px from the top */
-    transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
+
+
 }
 
 #sidebar.active {
-    left: 0;
+    width: 250px;
+    transition: 0.5s;
 }
 
-/* The navigation menu links */
 .sidenav a {
+    white-space: nowrap;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -227,34 +227,40 @@
 
 
 
-#banner img{
+#banner img {
     max-height: 220px;
 }
+
 /*코디 추천*/
-.codi_recommand{
+.codi_recommand {
     margin-bottom: 60px;
 }
-.sub_title{
-    margin-top:25px;
+
+.sub_title {
+    margin-top: 25px;
     margin-bottom: 30px;
-    border-bottom:1px solid rgb(203,206,219);
+    border-bottom: 1px solid rgb(203, 206, 219);
     position: relative;
 }
-.sub_title h1{
-    
+
+.sub_title h1 {
+
     font-size: 30px;
-color: #11368c;
-font-family: "MalgunGothic";
-font-weight: bold;
+    color: #11368c;
+    font-family: "MalgunGothic";
+    font-weight: bold;
 }
-.codi_title{
+
+.codi_title {
     margin-bottom: 60px;
 }
+
 .codi_recommand ul {
     overflow: hidden;
     width: 636px;
     margin: 0 auto;
 }
+
 .codi_recommand li {
     float: left;
     width: 210px;
@@ -262,6 +268,7 @@ font-weight: bold;
     border: 1px solid #c4c4c4;
     margin-right: -1px;
 }
+
 .codi_recommand li a {
     display: block;
     padding: 15px 0;
@@ -269,47 +276,54 @@ font-weight: bold;
     color: #666;
     font-weight: 700;
 }
-.codi_recommand li.active a{
+
+.codi_recommand li.active a {
     background: #666;
     color: #fff;
 }
 
-.codi_recommand_image>div >div>div{
-    float:left;
-    
+.codi_recommand_image > div > div > div {
+    float: left;
+
 }
-.codi_recommand_image>div >div>div .codi .rank{
+
+.codi_recommand_image > div > div > div .codi .rank {
     position: absolute;
     top: 17px;
-    left: 10px;
+    left: 2px;
     width: 50px;
     height: 50px;
     font-size: 22px;
-    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
     line-height: 50px;
     background-color: lightgray;
     text-align: center;
 }
-.codi_recommand_image>div >div>div .codi .rank strong{
-color: white;
+
+.codi_recommand_image > div > div > div .codi .rank strong {
+    color: white;
 }
-.codi_recommand_image>div >div>div .codi .item{
+
+.codi_recommand_image > div > div > div .codi .item {
     position: relative;
     background: #333;
-    height:400px;
+    height: 297px;
+    overflow: hidden;
 }
-.codi_recommand_image>div >div>div .codi .item img{
+
+.codi_recommand_image > div > div > div .codi .item img {
     position: absolute;
     display: block;
-    top:50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    max-height: 100%;
-    max-width: 100%;
+    transform: translate(-50%, -50%);
+    width:100%;
     height: auto;
-    width: auto;
+    
 }
-/*상세보기*/.overlay1{
+
+/*상세보기*/
+.overlay1 {
     position: fixed;
     display: none;
     width: 100%;
@@ -321,9 +335,11 @@ color: white;
     display: none;
     cursor: pointer;
 }
+
 body.modal_on {
-        overflow: hidden;
-    }
+    overflow: hidden;
+}
+
 .modal .closebtn {
     position: absolute;
     top: -15px;
@@ -333,8 +349,10 @@ body.modal_on {
     font-weight: bold;
     cursor: pointer;
 }
+
 .modal {
-    width :1080px;
+    display: none;
+    width: 1080px;
     background-color: white;
     position: fixed;
     z-index: 1000;
@@ -342,21 +360,25 @@ body.modal_on {
     border: 1px solid #000;
     box-sizing: border-box;
 }
-.infor{
-    width:90%;
+
+.infor {
+    width: 90%;
     margin: 0 auto;
     margin-top: 20px;
 }
-.img img{
-    height:auto;
-    width:100%;
+
+.img img {
+    height: auto;
+    width: 100%;
     max-height: 90%;
 }
-.img{
+
+.img {
     position: relative;
     cursor: pointer;
 }
-.img .memo{
+
+.img .memo {
     display: none;
     position: absolute;
     left: 47.7333%;
@@ -364,26 +386,29 @@ body.modal_on {
     top: 54.4%;
     transform: translate(-50%, 0%);
 }
-.img .memo_infor{
-    background:rgba(0,0,0,.85);
+
+.img .memo_infor {
+    background: rgba(0, 0, 0, .85);
     color: white;
-    border-radius:10px;
-    padding:10px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.img .memo_infor:after{
- border-top:0px solid transparent;
- border-left: 8px solid transparent;
- border-right: 8px solid transparent;
- border-bottom: 10px solid rgba(0,0,0,.85);
- content:"";
- position:absolute;
- top:-10px;
- left:40%;
+.img .memo_infor:after {
+    border-top: 0px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid rgba(0, 0, 0, .85);
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 40%;
 }
-.item img{
+
+.item img {
     cursor: pointer;
 }
+
 .img .name {
     position: absolute;
     bottom: 4px;
@@ -391,21 +416,23 @@ body.modal_on {
     height: 60px;
     display: inline-block;
     overflow: hidden;
-    background-color: rgb(165,148,140);
+    background-color: rgb(165, 148, 140);
     opacity: 0.8;
-    padding:0 10px;
+    padding: 0 10px;
 }
 
 .name strong {
     line-height: normal;
     font-size: 30px;
     color: white;
-    font-family: "Malgun Gothic","맑은고딕";
+    font-family: "Malgun Gothic", "맑은고딕";
     font-weight: normal;
 }
-.infor .bottom{
+
+.infor .bottom {
     overflow: hidden;
 }
+
 .name em {
     line-height: normal;
     display: block;
@@ -414,42 +441,49 @@ body.modal_on {
     font-family: "doctum", "돋움";
 }
 
-.tag{
+.tag {
     margin-top: 10px;
-    overflow:hidden;
+    overflow: hidden;
     height: 22px;
 }
-.tag img{
-    height:20px;
+
+.tag img {
+    height: 20px;
     width: auto;
 }
-.tag .tag_infor{
-    vertical-align:top;
+
+.tag .tag_infor {
+    vertical-align: top;
     display: inline-block;
-    color:rgb(51,99,148);
+    color: rgb(51, 99, 148);
     font-family: "Dotum";
 }
-.infor_btn{
+
+.infor_btn {
     position: absolute;
-    bottom:5px;
+    bottom: 5px;
     right: 10px;
 }
-.btn{
+
+.btn {
     margin-right: 5px;
-    padding:5px;
-    float:right;
+    padding: 5px;
+    float: right;
     margin-top: 5px;
-        color:rgb(51,99,148);
+    color: rgb(51, 99, 148);
     font-family: "Dotum";
 }
-.btn:hover{
+
+.btn:hover {
     background-color: red;
     border-radius: 12px;
-    color:black;
+    color: black;
 }
-.btn em{
+
+.btn em {
     cursor: pointer;
 }
+
 /*푸터*/
 .footer_infor {
     text-align: center;
@@ -482,19 +516,263 @@ body.modal_on {
 }
 
 /*반응형 디자인*/
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media (max-width: 1290px){
-    .container {width: 100%;}
+@media (max-width: 1290px) {
+    .container {
+        width: 100%;
+    }
 }
-@media (max-width: 1024px){
-    .container {width: 1280px;}
+
+
+@media (max-width: 1280px) {
+    #banner img {
+        max-height: 17.46vw;
+    }
+
+    .row {
+        padding: 0 2vw;
+    }
+    .codi_recommand_image > div > div > div .codi .item{
+height:  22.629vw;
 }
-@media screen and (max-height: 450px) {
+
+}
+@media (max-width: 960px){
+    .codi_recommand_image > div > div > div .codi .item{
+height:  30.430vw;
+    }
+    
+}
+
+
+
+@media (max-width: 768px) {
+    /* 로그인 */
+    .login {
+        position: absolute;
+        right : 1px;
+        bottom: 8px;
+        display: block;
+    }
+
+    .login a {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+
+    .login_after {
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+
+    }
+        
+    .login_after a {
+        margin-right: 5px;
+        font-size: 9px;
+    }
+
+    #hellonick {
+        display: none;
+    }
+    /*네비게이션*/
     .sidenav {
-        padding-top: 15px;
+        height: 0;
+        width: 100%;
+        padding: 0px;
+        top: 0px;
+        left: 0px;
+        overflow-y: hidden;
+
+
     }
 
     .sidenav a {
+        text-align: center;
+        padding: 0px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+    }
+
+    #sidebar.active {
+        height: 100%;
+        width: 100%;
+        padding-top: 60px;
+
+    }
+
+    .modal {
+        min-height: 0px;
+        min-width: 0px;
+        border: 0px;
+    }
+
+    .codi_title {
+        margin-bottom: 30px;
+    }
+    .codi_recommand_image > div > div > div .codi .item{
+height:  46.483vw;
+    }
+
+    .codi_recommand ul {
+        position: relative;
+        padding-bottom: 10px;
+        width: auto;
+    }
+
+    .codi_recommand ul:before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: #e1e1e1;
+    }
+
+    .codi_recommand li {
+        width: auto;
+        border: 0;
+    }
+
+    .codi_recommand li a{
+        position: relative;
         font-size: 18px;
+        color: #666;
+        font-weight: 400;
+        padding: 0;
+        margin-right: 35px;
+    }
+
+    .codi_recommand li.active a:before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        bottom: -10px;
+        width: 100%;
+        height: 2px;
+        background: #666;
+    }
+
+    .codi_recommand li.active a {
+        background: none;
+        color: #666;
+    }
+
+
+}
+
+@media (max-width: 600px) {
+    .header h1 img {
+
+        width: 47px;
+    }
+
+    .header .logo {
+        height: 44px;
+        left: 50%;
+        top: 0px;
+        position: absolute;
+        transform: translate(-50%, 0)
+    }
+
+    .header .logo strong {
+        font-size: 37px;
+    }
+
+    .header .logo em {
+        display: none;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .codi_title {
+        margin-bottom: 20px;
+    }
+
+    .codi_recommand ul {
+        padding-bottom: 8px;
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+
+    .codi_recommand li a {
+        font-size: 14px;
+        margin-right: 15px;
+    }
+
+    .codi_recommand li.active a:before {
+        bottom: -8px;
+    }
+
+    .movie_chart {
+        position: relative;
+        z-index: 30;
+    }
+    .codi_recommand_image > div > div > div .codi .item{
+height:  66.883vw;
+    }
+
+    .codi_recommand_image > div > div > div .infor {
+        padding: 5px;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .header h1 img {
+
+        width: 35px;
+    }
+
+    .header .logo {
+        height: 29px;
+    }
+
+    .header .logo strong {
+        font-size: 27px;
+    }
+
+    .sub_title h1 {
+        font-size: 25px;
+    }
+
+    .sub_title em {
+        font-size: 10px
+    }
+
+    @media (max-width: 320px) {
+
+        .header .logo {
+            height: 25px;
+        }
+
+        .header .logo strong {
+            line-height: normal;
+            font-size: 20px;
+            color: #3381e8;
+            font-family: "BMJUA";
+            font-weight: normal;
+        }
+
+        .codi_recommand li a {
+            margin-right: 9px;
+        }
+        .codi_recommand_image > div > div > div .codi .rank {
+            top:13px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 19px;
+        }
     }
 }

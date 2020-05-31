@@ -102,12 +102,13 @@
                 <div id="input_category">                    
                     <label>카테고리</label>
                     <select class="select" v-model="category">
-                        <option>반팔 셔츠</option>
-                        <option>긴팔 셔츠</option>
-                        <option>민소매 셔츠</option>
+                        <option>반팔셔츠</option>
+                        <option>긴팔셔츠</option>
+                        <option>민소매셔츠</option>
                         <option>셔츠/블라우스</option>
-                        <option>피케/카라 티셔츠</option>
-                        <option>맨투맨/스웨트 셔츠</option>
+                        <option>피케/카라티셔츠</option>
+                        <option>맨투맨/스웨트셔츠</option>
+                        <option>후드</option>
                         <option>니트/스웨터/가디건</option>
                         <option>베스트</option>
                         <option>기타</option>
@@ -295,7 +296,7 @@ let load = new Vue({
 let input_category = new Vue({
     el: '#input_category',
     data : {
-        category : '반팔 셔츠',
+        category : '반팔셔츠',
         color : 'black'
     },
     methods : {

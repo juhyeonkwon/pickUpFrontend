@@ -210,6 +210,15 @@
     transition: 0.3s;
 }
 
+#upload_memu {
+    display: none;
+} 
+
+#href_profile {
+    display: none;
+} 
+
+
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
@@ -543,6 +552,41 @@ body.modal_on {
 
 
 @media (max-width: 768px) {
+    /* 로그인 */
+    .login {
+        position: absolute;
+        right : 1px;
+        bottom: 8px;
+        display: block;
+    }
+
+    .login a {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+
+    .login_after {
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+    
+    }
+        
+    .login_after a {
+        margin-right: 5px;
+        font-size: 9px;
+    }
+
+    #hellonick {
+        display: none;
+    }
+    
+    .login_after li {
+        display: inline;
+        position: relative;
+        padding-right: 0px;
+        white-space: nowrap;
+    }
 
     /*네비게이션*/
     .sidenav {

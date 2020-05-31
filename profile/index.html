@@ -50,7 +50,7 @@
                             </a>
                         </em>
                     </h1>
-                    <div class="login" id='login'>
+                    <div class="login" id='login' style="display: block;">
                         <a href="../login/">로그인</a>
                         <a href="../signup/">회원가입</a>
                     </div>
@@ -297,6 +297,12 @@ var photo = new Vue({
                     
                     var select_user = response.data.user[0]
                     console.log(select_user)
+
+                    //프로필 공개, 비공개 여부
+                    if(select_user.profile != 1) {
+                        alert('프로필 비공개 사용자 입니다.')
+                        history.go(-1);
+                    }
 
                     //처음 두개
                     this.fcoordis.push(this.coordis[0]);

@@ -159,29 +159,24 @@
 /*검색 끝*/
 /*카테고리 네비*/
 /* The side navigation menu */
+
 .sidenav {
     height: 100%;
-    /* 100% Full-height */
-    width: 250px;
+    width: 0;
     position: fixed;
-    /* Stay in place */
-    z-index: 999;
-    /* Stay on top */
+    z-index: 1001;
     top: 0;
-    /* Stay at the top */
-    left: -250px;
+    left: 0;
+    padding-top:60px;
     background-color: #111;
-    /* Black*/
     overflow-x: hidden;
-    /* Disable horizontal scroll */
-    padding-top: 60px;
-    /* Place content 60px from the top */
-    transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
+
+
 }
 
 #sidebar.active {
-    left: 0;
+    width: 250px;
+    transition: 0.5s;
 }
 
 /* The navigation menu links */
@@ -246,7 +241,6 @@
 /*업로드 사진*/
 .form{
     position: relative;
-    width:1000px;
     margin:0 auto;
     margin-bottom: 70px;
 }
@@ -296,7 +290,7 @@
     left: 0;
     width:100%;
     height: 100%;
-    background:#333;
+    background:#fff;
     position: absolute;
     box-sizing: border-box;
     cursor: pointer;
@@ -324,7 +318,7 @@ background-repeat: no-repeat;
 }
 
 /*셀럭트박스*/
-.selection select {   width: 200px;
+.selection select {   width: 198px;
   padding: .9em .5em;
   font-family: inherit;
   background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;  
@@ -389,7 +383,7 @@ input[type=submit] {
 font-size:15px;}
 .tag{margin:15px 0;
 margin-left: 15px;overflow: hidden;}
-.tag .memo{width:95%; display: block;height:200px;margin-top: 20px;resize:none;font-size:20px;}
+.tag .memo{width:99%; display: block;height:200px;margin-top: 20px;resize:none;font-size:20px;}
 .memo:placeholder{color:black;}
 .tag .season2{
     display: none;
@@ -428,20 +422,184 @@ margin-left: 15px;overflow: hidden;}
     height: 0;
 }
 
+
 /*반응형 디자인*/
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media (max-width: 1290px){
-    .container {width: 100%;}
+@media (max-width: 1290px) {
+    .container {
+        width: 100%;
+    }
 }
-@media (max-width: 1024px){
-    .container {width: 1280px;}
+
+
+@media (max-width: 1280px) {
+    #banner img {
+        max-height: 17vw;
+    }
+
+    .row {
+        padding: 0 2vw;
+    }
+
+
+
 }
-@media screen and (max-height: 450px) {
+
+
+@media (max-width:1024px){
+    .upload{
+        float:none;
+        margin: 0 auto;
+    }
+    .selection{
+        text-align: center;
+        margin-top:30px;
+        float:none;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+        margin-left:0px;
+    }
+      .selection select{
+        width:30vw;
+        font-size:2.3vw;
+            }
+}
+
+@media (max-width: 768px) {
+    /* 로그인 */
+    .login {
+        position: absolute;
+        right : 1px;
+        bottom: 8px;
+        display: block;
+    }
+
+    .login a {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+
+    .login_after {
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+
+    }
+        
+    .login_after a {
+        margin-right: 5px;
+        font-size: 9px;
+    }
+
+    #hellonick {
+        display: none;
+    }
+
+    .login_after li {
+        display: inline;
+        position: relative;
+        padding-right: 0px;
+        white-space: nowrap;
+    }
+  
+    /*네비게이션*/
     .sidenav {
-        padding-top: 15px;
+        height: 0;
+        width: 100%;
+        padding:0px;
+        top: 0px;
+        left: 0px;
+        overflow-y: hidden;
+
+
     }
 
     .sidenav a {
-        font-size: 18px;
+        text-align: center;
+        padding: 0px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        
     }
+
+    #sidebar.active {
+        height: 100%;
+        width: 100%;
+        padding-top: 60px;
+
+    }
+
+
+ 
 }
+    @media (max-width: 600px) {
+        .header h1 img {
+
+            width: 47px;
+        }
+
+
+        .header .logo {
+            height: 44px;
+            left: 50%;
+            top: 0px;
+            position: absolute;
+            transform: translate(-50%, 0)
+        }
+
+        .header .logo strong {
+            font-size: 37px;
+        }
+
+        .header .logo em {
+            display: none;
+        }
+
+        .search {
+            display: none;
+        }
+    }
+
+
+    @media (max-width: 480px) {
+
+        .header h1 img {
+
+            width: 35px;
+        }
+
+        .header .logo {
+            height: 29px;
+        }
+
+        .header .logo strong {
+            font-size: 27px;
+        }
+        .sub_title h1{
+            font-size:25px;
+        }
+        
+
+        @media (max-width: 320px) {
+            .memo{
+                font-size:15px !important;
+            }
+            .upload{
+                width:300px;
+            }
+            .header .logo {
+                height: 25px;
+            }
+
+            .header .logo strong {
+                line-height: normal;
+                font-size: 20px;
+                color: #3381e8;
+                font-family: "BMJUA";
+                font-weight: normal;
+            }
+            .tag memo{
+            font-size:10px;
+        }
+        }
+
+    }

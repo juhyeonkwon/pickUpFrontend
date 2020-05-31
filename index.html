@@ -35,7 +35,10 @@
     <div id='vue'> </div>
 
     <div class="overlay">
-
+        <div class="login" id="login">
+            <a href="./login">로그인</a>
+            <a href="./signup">회원가입</a>
+        </div>
     </div>
     <header id="header">
         <div class="container">
@@ -46,7 +49,7 @@
                             <img src="assets/img/btn_category.png" alt="카테고리">
                         </span>
                         <em class="logo">
-                            <a href='http://124.153.233.204:3333/'>
+                            <a href='./'>
                                 <strong>옷 좀 골라줄래?</strong>
                                 <em>
                                     Can you pick some clothes?
@@ -55,7 +58,7 @@
                             </a>
                         </em>
                     </h1>
-                    <div class="login" id="login">
+                    <div class="login" id="login_menu">
                         <a href="./login">로그인</a>
                         <a href="./signup">회원가입</a>
                     </div>
@@ -78,9 +81,8 @@
             <a href="./coordi/">코디 Photo</a>
             <a href="./worldcup/">이상형 월드컵</a>
             <a href="./recommend/">코디 추천</a>
-            <div class="login_session" id='logprofile'>            
-                <a href="./upload/">코디 업로드</a>
-                <a id="href_profile">프로필</a></div>
+            <a href="./upload/" id="upload_menu" style="display: none;">코디 업로드</a>
+            <a id="href_profile">프로필</a>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -252,14 +254,17 @@ if(confirm('로그아웃 하시겠습니까?')) {
     });
 
 
-    let login = document.getElementById('login');
+    let login = document.getElementById('login_menu');
     login.style.display = 'block';
 
     let login_session = document.getElementById('login_session');
     login_session.style.display = 'none';
 
-    let profile = document.getElementById('logprofile');
+    let profile = document.getElementById('href_profile');
     profile.style.display = 'none';
+
+    let upload_memu = document.getElementById('upload_menu');
+    upload_memu.style.display = 'none';
 
     window.location.reload()              
   }  
@@ -299,14 +304,18 @@ window.onpageshow = function(event) {
                         this.logined_user_id = response.data.user_id;
                         document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
 
-                        let login = document.getElementById('login');
+                        let login = document.getElementById('login_menu');
                         login.style.display = 'none';
 
                         let login_session = document.getElementById('login_session');
                         login_session.style.display = 'block';
 
-                        let profile = document.getElementById('logprofile');
+                        let profile = document.getElementById('href_profile');
                         profile.style.display = 'block';
+
+                        let upload_memu = document.getElementById('upload_menu');
+                        upload_memu.style.display = 'block';
+
                         $('#href_profile').attr('href', '/profile/?id=' + response.data.user_id);
 
                     }

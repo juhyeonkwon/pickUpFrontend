@@ -75,6 +75,7 @@
     position: absolute;
     right:250px;
     bottom:8px;
+    display: none;
 }
 .login a{
     margin-right: 10px;
@@ -181,31 +182,26 @@
 
 .sidenav {
     height: 100%;
-    /* 100% Full-height */
-    width: 250px;
+    width: 0;
     position: fixed;
-    /* Stay in place */
-    z-index: 999;
-    /* Stay on top */
+    z-index: 1001;
     top: 0;
-    /* Stay at the top */
-    left: -250px;
+    left: 0;
+    padding-top:60px;
     background-color: #111;
-    /* Black*/
     overflow-x: hidden;
-    /* Disable horizontal scroll */
-    padding-top: 60px;
-    /* Place content 60px from the top */
-    transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
+
+
 }
 
 #sidebar.active {
-    left: 0;
+    width: 250px;
+    transition: 0.5s;
 }
 
 /* The navigation menu links */
 .sidenav a {
+    white-space: nowrap;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -280,7 +276,7 @@
     float: left;
     width: 49%;
 }
-.photo1 div,.photo2 div{width:100%;height: 100%;}
+
 .photo1 .item {
     margin-right: 4%;
     float: left;
@@ -314,133 +310,165 @@
 body.modal_on {
     overflow: hidden;
 }
+
 .modal .closebtn {
-position: absolute;
-top: -15px;
-right: 2px;
-margin-left: 25px;
-font-size: 36px;
-font-weight: bold;
-cursor: pointer;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    margin-left: 25px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+
 }
+
 .modal {
-width :1080px;
-background-color: white;
-position: fixed;
-z-index: 1000;
-padding: 1em;
-border: 1px solid #000;
-box-sizing: border-box;
+    display: none;
+    width: 1080px;
+    background-color: white;
+    position: fixed;
+    z-index: 1000;
+    padding: 1em;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-height: 666.4px;
+    min-width: 436.928px;
 }
 
-.infor{
-width:90%;
-margin: 0 auto;
-margin-top: 20px;
-}
-.img img{
-height:auto;
-width:100%;
-max-height: 90%;
-}
-.img{
-position: relative;
-cursor: pointer;
-}
-.img .memo{
-display: none;
-position: absolute;
-left: 47.7333%;
-margin-top: 6px;
-top: 54.4%;
-transform: translate(-50%, 0%);
-}
-.img .memo_infor{
-background:rgba(0,0,0,.85);
-color: white;
-border-radius:10px;
-padding:10px;
+.infor {
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
-.img .memo_infor:after{
-border-top:0px solid transparent;
-border-left: 8px solid transparent;
-border-right: 8px solid transparent;
-border-bottom: 10px solid rgba(0,0,0,.85);
-content:"";
-position:absolute;
-top:-10px;
-left:40%;
+.img img {
+    height: auto;
+    width: 100%;
+    max-height: 90%;
 }
-.item img{
-cursor: pointer;
+
+.img {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    width: 90%;
+
 }
+
+.img .memo {
+    display: none;
+    position: absolute;
+    left: 47.7333%;
+    margin-top: 6px;
+    top: 54.4%;
+    transform: translate(-50%, 0%);
+}
+
+.img .memo_infor {
+    background: rgba(0, 0, 0, .85);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.img .memo_infor:after {
+    border-top: 0px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid rgba(0, 0, 0, .85);
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 40%;
+}
+
+.item img {
+    cursor: pointer;
+}
+
 .img .name {
-position: absolute;
-bottom: 4px;
-left: 0px;
-height: 60px;
-display: inline-block;
-overflow: hidden;
-background-color: rgb(165,148,140);
-opacity: 0.8;
-padding:0 10px;
+    position: absolute;
+    bottom: 4px;
+    left: 0px;
+    height: 60px;
+    display: inline-block;
+    overflow: hidden;
+    background-color: rgb(165, 148, 140);
+    opacity: 0.8;
+    padding: 0 10px;
 }
 
 .name strong {
-line-height: normal;
-font-size: 30px;
-color: white;
-font-family: "Malgun Gothic","맑은고딕";
-font-weight: normal;
-}
-.infor .bottom{
-overflow: hidden;
-}
-.name em {
-line-height: normal;
-display: block;
-font-size: 15px;
-color: white;
-font-family: "doctum", "돋움";
+    line-height: normal;
+    font-size: 30px;
+    color: white;
+    font-family: "Malgun Gothic", "맑은고딕";
+    font-weight: normal;
 }
 
-.tag{
-margin-top: 10px;
-overflow:hidden;
-height: 22px;
+.infor .bottom {
+    overflow: hidden;
 }
-.tag img{
-height:20px;
-width: auto;
+
+.name em {
+    line-height: normal;
+    display: block;
+    font-size: 15px;
+    color: white;
+    font-family: "doctum", "돋움";
 }
-.tag .tag_infor{
-vertical-align:top;
-display: inline-block;
-color:rgb(51,99,148);
-font-family: "Dotum";
+
+.tag {
+    margin-top: 10px;
+    display: block;
+    text-align: start;
+    padding-left: 5%;
 }
-.infor_btn{
-position: absolute;
-bottom:5px;
-right: 10px;
+
+.tag img {
+    height: 20px;
+    width: auto;
 }
-.btn{
-margin-right: 5px;
-padding:5px;
-float:right;
-margin-top: 5px;
-    color:rgb(51,99,148);
-font-family: "Dotum";
+
+.tag .tag_infor {
+    vertical-align: top;
+    display: inline-block;
+    color: rgb(51, 99, 148);
+    font-family: "Dotum";
 }
-.btn:hover{
-background-color: red;
-border-radius: 12px;
-color:black;
+
+.infor_btn {
+    padding-right: 5%;
+    overflow: hidden;
 }
-.btn em{
-cursor: pointer;
+
+.btn {
+    margin-right: 5px;
+    padding: 5px;
+    float: right;
+    margin-top: 5px;
+    color: rgb(51, 99, 148);
+    font-family: "Dotum";
 }
+
+.btn:first-child {
+    margin-right: 0px;
+}
+
+.btn:hover {
+    background-color: red;
+    border-radius: 12px;
+    color: black;
+}
+
+.btn em {
+    cursor: pointer;
+}
+
 /*푸터*/
 .footer_infor {
     text-align: center;
@@ -472,26 +500,253 @@ cursor: pointer;
     height: 0;
 }
 
-/*반응형 디자인*/
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media (max-width: 1290px) {
     .container {
         width: 100%;
     }
 }
 
-@media (max-width: 1024px) {
-    .container {
-        width: 1280px;
+
+@media (max-width: 1280px) {
+    #banner img {
+        max-height: 36.75vw;
     }
+
+    .row {
+        padding: 0 2vw;
+    }
+    .profile{
+        width:46vw;
+        height: 22vw;
+        margin-right: 2vw;
+        
+    }
+    .profile h1{
+        padding-left: 20%;
+            margin-top: 15%;
+        font-size:400%;
+        
+    }
+    .profile h2{
+        padding-left: 25%;
+        font-size:3vw;
+    }
+    .photo1{
+        width:48vw;
+    }
+    .photo1 .item {
+        margin-right: 2vw;
+        width: 22vw;
+        height: 22vw;
+        overflow: hidden;
+    }
+
+    .photo2 .item {
+       margin-right: 2vw;
+        width: 22vw;
+        height: 22vw;
+        overflow: hidden;
+    }
+
 }
 
-@media screen and (max-height: 450px) {
+
+
+
+@media (max-width: 768px) {
+    /* 로그인 */
+    .login {
+        position: absolute;
+        right : 1px;
+        bottom: 8px;
+        display: block;
+    }
+
+    .login a {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+
+    .login_after {
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+
+    }
+        
+    .login_after a {
+        margin-right: 5px;
+        font-size: 9px;
+    }
+
+    #hellonick {
+        display:none;
+    }
+
+    .search {
+        display: none;
+    }
+    /*네비게이션*/
     .sidenav {
-        padding-top: 15px;
+        height: 0;
+        width: 100%;
+        padding:0px;
+        top: 0px;
+        left: 0px;
+        overflow-y: hidden;
+
+
     }
 
     .sidenav a {
-        font-size: 18px;
+        text-align: center;
+        padding: 0px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        
     }
+
+    #sidebar.active {
+        height: 100%;
+        width: 100%;
+        padding-top: 60px;
+
+    }
+    .profile{
+        width:92.6vw;
+        height: 45.3vw;
+    }
+    .profile h1{
+        padding-left: 20%;
+            margin-top: 15%;
+        font-size:13vw;
+    }
+    .profile h2{
+        padding-left: 25%;
+        font-size:6vw;
+    }
+
+    .photo1{
+        width: 100%;
+    }
+    .photo1 .item {
+        margin-right: 2vw;
+        width: 45.3vw;
+        height: 45.3vw;
+        overflow: hidden;
+    }
+    .photo2 .item {
+        margin-right: 2vw;
+        width: 45.3vw;
+        height: 45.3vw;
+        overflow: hidden;
+    }
+
+    .photo2 .item:nth-child(2n) {
+        margin-right: 0px;
+    }
+
+    .photo .item1 {
+        margin-right: 2vw;
+        width: 45.3vw;
+        height: 45.3vw;
+        overflow: hidden;
+    }
+
+    .photo .item1:nth-child(2n) {
+        margin-right: 0px;
+    }
+    .modal{
+        min-height: 0px; 
+    min-width: 0px;
+            border: 0px;
+    }
+ 
 }
+    @media (max-width: 600px) {
+        .header h1 img {
+
+            width: 47px;
+        }
+
+        .header .logo {
+            height: 44px;
+            left: 50%;
+            top: 0px;
+            position: absolute;
+            transform: translate(-50%, 0)
+        }
+
+        .header .logo strong {
+            font-size: 37px;
+        }
+
+        .header .logo em {
+            display: none;
+        }
+
+        .search {
+            display: none;
+        }
+    }
+
+
+    @media (max-width: 480px) {
+        .profile{
+            width: 96vw;
+            height: 47vw;
+            
+        }
+        .profile h1{
+            font-size: 40px;
+            padding-left: 20%;
+            margin-top: 15%;
+        }
+        .profile h2{
+            margin: auto;
+            padding: 0px;
+            margin-left: 25%;
+            font-size: 20px;
+        }
+            .photo1 .item {
+        width: 47vw;
+        height: 47vw;
+    }
+                    .photo2 .item {
+        width: 47vw;
+        height: 47vw;
+    }
+        .header h1 img {
+
+            width: 35px;
+        }
+
+        .header .logo {
+            height: 29px;
+        }
+
+        .header .logo strong {
+            font-size: 27px;
+        }
+        .sub_title h1{
+            font-size:25px;
+        }
+        .sub_title em{
+            font-size:10px
+        }
+
+        @media (max-width: 320px) {
+
+            .header .logo {
+                height: 25px;
+            }
+
+            .header .logo strong {
+                line-height: normal;
+                font-size: 20px;
+                color: #3381e8;
+                font-family: "BMJUA";
+                font-weight: normal;
+            }
+        }
+    }

@@ -16,7 +16,7 @@
     <title>옷좀골라줄래</title>
     <!-- 스타일 시트-->
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -155,21 +155,18 @@
                     </div>
                 </div>
             </div>
-        <div class="bottom">
-
             <div class="tag">
                 <img src="assets/img/tag.jpg">
                 <div class="tag_infor" >
                     <em id="detail_tag">상의 여름 나들이 진갈색</em>
                 </div>
             </div>
-            <div id="modal_btn" style="display:none;">
+            <div class="infor_btn" id="modal_btn" style="display:none;">
                 <div class="btn report" v-on:click="report()"><em>신고</em></div>
                 <div class="btn erase" id="deleteBtn" style="display:none;" onclick="btn.delete();"><em>삭제</em></div>
                 <div class="btn rewrite" id="modifyBtn" style="display:none;" ><em>수정</em></div>
             </div>
         </div>
-    </div>
     </aside>
     <footer id="footer">
         <div id="footer_infor">

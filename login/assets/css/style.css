@@ -28,6 +28,7 @@
 #footer {
     background-color: rgba(238, 238, 238, 255);
     width: 100%;
+
 }
 
 /*헤더 영역 */
@@ -157,31 +158,26 @@
 
 .sidenav {
     height: 100%;
-    /* 100% Full-height */
-    width: 250px;
+    width: 0;
     position: fixed;
-    /* Stay in place */
-    z-index: 999;
-    /* Stay on top */
+    z-index: 1001;
     top: 0;
-    /* Stay at the top */
-    left: -250px;
+    left: 0;
+    padding-top:60px;
     background-color: #111;
-    /* Black*/
     overflow-x: hidden;
-    /* Disable horizontal scroll */
-    padding-top: 60px;
-    /* Place content 60px from the top */
-    transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
+
+
 }
 
 #sidebar.active {
-    left: 0;
+    width: 250px;
+    transition: 0.5s;
 }
 
 /* The navigation menu links */
 .sidenav a {
+    white-space: nowrap;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -231,7 +227,7 @@
 
 /*로그인 영역*/
 #loginArea{
-    margin: 40px 0 60px  0;
+    margin:0 auto;
 }
 .search{
     box-sizing: content-box;
@@ -244,8 +240,8 @@
     content: " ";
 }
 .loginArea{
-    margin-left: 30%;
-    width:40%;
+    margin: 0 auto;
+    width:504px;
 }
 .reg-page{
     color:#555;
@@ -428,25 +424,173 @@ label{
     background-color: rgba(238, 238, 238, 255);
 }
 /*반응형 디자인*/
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
 @media (max-width: 1290px) {
     .container {
         width: 100%;
     }
 }
 
-@media (max-width: 1024px) {
-    .container {
-        width: 1280px;
+
+@media (max-width: 1280px) {
+    #banner img {
+        max-height: 36.75vw;
     }
+
+    .row {
+        padding: 0 2vw;
+    }
+
+
 }
 
-@media screen and (max-height: 450px) {
+
+
+
+@media (max-width: 768px) {
+    /* 로그인 */
+    .login {
+        position: absolute;
+        right : 1px;
+        bottom: 8px;
+        display: block;
+    }
+
+    .login a {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+
+    .login_after {
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+
+    }
+        
+    .login_after a {
+        margin-right: 5px;
+        font-size: 9px;
+    }
+    /*네비게이션*/
     .sidenav {
-        padding-top: 15px;
+        height: 0;
+        width: 100%;
+        padding:0px;
+        top: 0px;
+        left: 0px;
+        overflow-y: hidden;
+
+
     }
 
     .sidenav a {
-        font-size: 18px;
+        text-align: center;
+        padding: 0px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        
+        
     }
+
+    #sidebar.active {
+        height: 100%;
+        width: 100%;
+        padding-top: 60px;
+
+    }
+
+ 
 }
+    @media (max-width: 600px) {
+        .header h1 img {
+
+            width: 47px;
+        }
+
+        .header .logo {
+            height: 44px;
+            left: 50%;
+            top: 0px;
+            position: absolute;
+            transform: translate(-50%, 0)
+        }
+
+        .header .logo strong {
+            font-size: 37px;
+        }
+
+        .header .logo em {
+            display: none;
+        }
+
+        .search {
+            display: none;
+        }
+        .loginArea{
+            width:100%;
+        }
+        .middlename{
+            text-align: center;
+            padding-left:0px;
+        }
+    }
+
+
+    @media (max-width: 480px) {
+    
+        .header h1 img {
+
+            width: 35px;
+            
+        }
+
+        .header .logo {
+            height: 29px;
+        }
+
+        .header .logo strong {
+            font-size: 27px;
+        }
+        .middlename{
+            padding-left:0px;
+            font-size: 20px;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            border-left:1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom:0px;
+        }
+        .reg-header h2{
+            display: none;
+        }
+        #loginArea{
+            margin-top: 0px;
+            
+        }
+        .reg-page{
+            border-top:0px;
+        }
+        .col-sm-6{
+            float:none;
+            width: 100%;
+        }
+        .reg-header{
+            display: none;
+        }
+}
+        @media (max-width: 320px) {
+
+            .header .logo {
+                height: 25px;
+            }
+
+            .header .logo strong {
+                line-height: normal;
+                font-size: 20px;
+                color: #3381e8;
+                font-family: "BMJUA";
+                font-weight: normal;
+            }
+        }
+

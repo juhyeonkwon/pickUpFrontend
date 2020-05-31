@@ -472,6 +472,20 @@
             autoplay: {
                 delay: 6000,
             },
+             breakpoints: {
+                 600: {
+                    slidesPerView: 1.4,
+                    spaceBetween: 24
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 24
+                },
+                960: {
+                    slidesPerView: 3,
+                    spaceBetween: 24
+                }
+            }
         });
         /*일간 주간 월간*/
                 var movBtn = $(".codi_title > ul > li");
@@ -618,16 +632,16 @@ let load = new Vue({
                     }
 
                     //태그 입력
-                    this.tag = this.tag + response.data[0].item1;
-                    this.tag = this.tag + ' ' + response.data[0].item2;
-                    this.tag = this.tag + ' ' + response.data[0].item3;
+                    //this.tag = this.tag + response.data[0].item1;
+                    //this.tag = this.tag + ' ' + response.data[0].item2;
+                    //this.tag = this.tag + ' ' + response.data[0].item3;
                     this.tag = this.tag + ' ' + response.data[0].season1;
                     if(response.data[0].season2 != null) this.tag = this.tag + ' ' + response.data[0].season2;
                     this.tag = this.tag + ' ' + response.data[0].situation1;
                     if(response.data[0].situation2 != null) this.tag = this.tag + ' ' + response.data[0].situation2;
-                    this.tag = this.tag + ' ' + response.data[0].color1;
-                    if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
-                    if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
+                    //this.tag = this.tag + ' ' + response.data[0].color1;
+                    //if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
+                    //if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
 
                     document.getElementById('detail_tag').innerText = this.tag;
                     $('#detail_href').prop('href', 'http://124.153.233.204:3333/profile/index.html?id=' + this.user_id)

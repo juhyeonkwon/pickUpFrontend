@@ -42,6 +42,12 @@
             modal.height=modal.width/a*b;
             modal.top = ( ( viewport.height - modal.height ) / 2-10 ) + "px";
             modal.left = ((viewport.width - modal.width) / 2) + "px";
+            if (viewport.width<769){
+                modal.top = "0px";
+                modal.left = "0px";
+                modal.height = "100%";
+                modal.width = "100%";
+            }
             $selector.Modal.css(modal);
            
 
