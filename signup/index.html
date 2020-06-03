@@ -81,7 +81,7 @@
         <div class="container table">
             <div class="row table">
                 <div class="signupArea">
-                    <form class="reg-page" method="post" action="http://124.153.233.204:3333/node/signup"id="signupForm">
+                    <form class="reg-page" method="post" action="http://pickclothes.iptime.org/node/signup"id="signupForm">
                         <div class="reg-header">
                             <h2>회원가입</h2>
                             <p>계정이 이미 있는 경우에는 <a href="../login/" class="color-green">로그인</a>해주세요. </p>
@@ -172,7 +172,7 @@
                         email: true,
                         maxlength: 100,
                         remote: {
-                            url: "http://124.153.233.204:3333/node/signup/signUpDupl",
+                            url: "http://pickclothes.iptime.org/node/signup/signUpDupl",
                             type: "post",
                             data: {
                                 email: function() {
@@ -186,7 +186,7 @@
                         minlength: 3,
                         maxlength: 16,
                         remote: {
-                            url: "http://124.153.233.204:3333/node/signup/signUpDuplNick",
+                            url: "http://pickclothes.iptime.org/node/signup/signUpDuplNick",
                             type: "post",
                             data: {
                                 nickname: function() {
@@ -264,7 +264,7 @@ let vue = new Vue({
     },
     methods : {
         onload : function() {
-            axios.post('http://124.153.233.204:3333/node/login/check').then(response => {
+            axios.post('http://pickclothes.iptime.org/node/login/check').then(response => {
                 console.log(response.data);
                 if(response.data.nick_name != undefined) {
                     alert('이미 로그인 되어있습니다');

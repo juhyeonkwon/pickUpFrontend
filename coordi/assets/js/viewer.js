@@ -5,6 +5,7 @@
     (function handleTrailer() {
         // 셀렉터 캐시
         var $selector = {
+            html: $("html"),
             body: $("body"),
             overlay: $(".overlay"),
             Modal: $("#modal"),
@@ -35,11 +36,11 @@
         function resizeView(a,b) {
             var viewport = {},
                 modal = {},
-                photo ={};
+                overlay ={};
             viewport.width = $(window).innerWidth();
             viewport.height = $(window).innerHeight();
-            modal.width = (viewport.height * 0.8 * a / b);
-            modal.height=modal.width/a*b;
+            modal.width = (viewport.height * 0.7 );
+            modal.height = viewport.height*0.7;
             modal.top = ( ( viewport.height - modal.height ) / 2-10 ) + "px";
             modal.left = ((viewport.width - modal.width) / 2) + "px";
             if (viewport.width<769){
@@ -48,6 +49,12 @@
                 modal.height = "100%";
                 modal.width = "100%";
             }
+            if (viewport.height<modal.height){
+                modal.top = "0px";
+                overlay = "auto";
+            }
+            else
+                overlay = "hidden";
             $selector.Modal.css(modal);
            
 

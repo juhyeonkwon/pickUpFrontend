@@ -161,7 +161,7 @@ let load = new Vue({
     },
     methods : {
         onload : function() {
-                axios.post('http://124.153.233.204:3333/node/login/check').then(response => {
+                axios.post('http://pickclothes.iptime.org/node/login/check').then(response => {
                     console.log(response.data);
                     if(response.data.nick_name != undefined) {
                         document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
@@ -190,7 +190,7 @@ if(confirm('로그아웃 하시겠습니까?')) {
 
     let xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'http://124.153.233.204:3333/node/login/logout');
+    xhr.open('POST', 'http://pickclothes.iptime.org/node/login/logout');
     xhr.send();
     xhr.addEventListener('load', function() {
                 console.log(xhr.response);

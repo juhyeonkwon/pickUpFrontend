@@ -69,7 +69,6 @@
     position: absolute;
     right: 250px;
     bottom: 8px;
-    display: none;
 }
 
 .login a {
@@ -284,7 +283,7 @@
 
 .codi_recommand_image > div > div > div {
     float: left;
-
+    border: 1px solid #eee;
 }
 
 .codi_recommand_image > div > div > div .codi .rank {
@@ -306,7 +305,7 @@
 
 .codi_recommand_image > div > div > div .codi .item {
     position: relative;
-    background: #333;
+    background: #fff;
     height: 297px;
     overflow: hidden;
 }
@@ -317,9 +316,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width:100%;
-    height: auto;
-    
+    width: auto;
+    height: 100%;
 }
 
 /*상세보기*/
@@ -348,6 +346,7 @@ body.modal_on {
     font-size: 36px;
     font-weight: bold;
     cursor: pointer;
+    z-index:2000;
 }
 
 .modal {
@@ -359,23 +358,38 @@ body.modal_on {
     padding: 1em;
     border: 1px solid #000;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .infor {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
     width: 90%;
-    margin: 0 auto;
-    margin-top: 20px;
 }
 
 .img img {
-    height: auto;
-    width: 100%;
-    max-height: 90%;
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    transform: translate(-50%,-50%);
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
 }
 
 .img {
+    border: 1px solid #eee;
+    width: 85.714%;
+    height:60vh;
     position: relative;
     cursor: pointer;
+    background: #eee;
+    margin: 0 auto;
+
 }
 
 .img .memo {
@@ -546,11 +560,12 @@ height:  30.430vw;
 
 
 @media (max-width: 768px) {
+    
     /* 로그인 */
     .login {
         position: absolute;
-        right : 1px;
-        bottom: 8px;
+        right : 5px;
+        bottom: 50px;
         display: block;
     }
 
@@ -561,8 +576,8 @@ height:  30.430vw;
 
     .login_after {
         position: absolute;
-        right: 1px;
-        bottom: 5px;
+        right: 5px;
+        bottom: 50px;
 
     }
         
@@ -574,6 +589,7 @@ height:  30.430vw;
     #hellonick {
         display: none;
     }
+   
     /*네비게이션*/
     .sidenav {
         height: 0;
@@ -660,11 +676,43 @@ height:  46.483vw;
         background: none;
         color: #666;
     }
+     .img {height: 100vw; width: 100%;}
+    .modal{
+        border: 0px;
+    }
 
 
 }
 
 @media (max-width: 600px) {
+     /* 로그인 */
+     .login {
+        position: absolute;
+        right : 1px;
+        bottom: 8px;
+        display: block;
+    }
+
+    .login a {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+
+    .login_after {
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+
+    }
+        
+    .login_after a {
+        margin-right: 5px;
+        font-size: 9px;
+    }
+
+    #hellonick {
+        display: none;
+    }
     .header h1 img {
 
         width: 47px;

@@ -451,8 +451,8 @@ label{
     /* 로그인 */
     .login {
         position: absolute;
-        right : 1px;
-        bottom: 8px;
+        right : 5px;
+        bottom: 50px;
         display: block;
     }
 
@@ -463,8 +463,8 @@ label{
 
     .login_after {
         position: absolute;
-        right: 1px;
-        bottom: 5px;
+        right: 5px;
+        bottom: 50px;
 
     }
         
@@ -472,6 +472,11 @@ label{
         margin-right: 5px;
         font-size: 9px;
     }
+
+    #hellonick {
+        display: none;
+    }
+   
     /*네비게이션*/
     .sidenav {
         height: 0;
@@ -503,6 +508,30 @@ label{
  
 }
     @media (max-width: 600px) {
+         /* 로그인 */
+    .login {
+        position: absolute;
+        right : 1px;
+        bottom: 8px;
+        display: block;
+    }
+
+    .login a {
+        margin-right: 5px;
+        font-size: 10px;
+    }
+
+    .login_after {
+        position: absolute;
+        right: 1px;
+        bottom: 5px;
+
+    }
+        
+    .login_after a {
+        margin-right: 5px;
+        font-size: 9px;
+    }
         .header h1 img {
 
             width: 47px;
