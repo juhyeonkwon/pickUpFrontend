@@ -77,6 +77,7 @@
             <div class="login_session" id='logprofile'>
                 <a href="../upload/">코디 업로드</a>
                 <a href="#">프로필</a></div>
+            <a href="../howto/">이용안내</a>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -352,16 +353,16 @@ var photo = new Vue({
 
 
                 //태그 입력
-                //this.tag = this.tag + response.data[0].item1;
-                //this.tag = this.tag + ' ' + response.data[0].item2;
-                //this.tag = this.tag + ' ' + response.data[0].item3;
+                this.tag = this.tag + response.data[0].item1;
+                this.tag = this.tag + ' ' + response.data[0].item2;
+                this.tag = this.tag + ' ' + response.data[0].item3;
                 this.tag = this.tag + ' ' + response.data[0].season1;
                 this.tag = this.tag + ' ' + response.data[0].season2;
                 this.tag = this.tag + ' ' + response.data[0].situation1;
                 this.tag = this.tag + ' ' + response.data[0].situation2;
-                //this.tag = this.tag + ' ' + response.data[0].color1;
-                //if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
-                //if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
+                this.tag = this.tag + ' ' + response.data[0].color1;
+                if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
+                if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
 
 
                 $('#detail_href').prop('href', 'http://pickclothes.iptime.org/profile/index.html?id=' + this.user_id)

@@ -90,7 +90,13 @@
             <div class="row">
                 <div class="codi_recommand">
                     <div class="sub_title">
-                        <h1 id="sub_situation">코디 추천</h1>
+                        <h1 id="sub_situation" style="display: inline;">코디 추천</h1>
+                        <h1 id="gender_box" style="display: inline">
+                            <select id="genter" name="gender" class="gender" onchange="load.coordi_load()">
+                                <option value="man">남자</option>
+                                <option value="woman">여자</option>
+                            </select>
+                        </h1>
                     </div>
                             <div class="codi_title">
                              <ul>
@@ -517,6 +523,12 @@ function getUrlParams() {
 vuejs
 */
 
+let gen = false; //gender
+
+function changeGen() {
+    gen = !gen;
+}
+
 //삭제,수정 등 하기위한 변수
 let detail_coordi_id;
 
@@ -565,9 +577,24 @@ let load = new Vue({
                     }
                 }).catch(error => { console.log('con err')});
         },
-        coordi_load : function() {            
+        coordi_load : function() {   
+            changeGen();       
+            let gender;
+
+            if(gen) {
+                gender = 'man'
+            } else {
+                gender = 'woman'
+            }
+
+            for(i = 1; i < 11; i++) {
+                $('#day' + i).attr('src', './assets/img/noimage.jpg');
+                $('#week' + i).attr('src', './assets/img/noimage.jpg')
+                $('#month' + i).attr('src', './assets/img/noimage.jpg');
+            }
+
             let situation = this.switchKor()
-            axios.post('http://pickclothes.iptime.org/node/recommend/situation', {num : this.num, situation : situation}).then(response => {
+            axios.post('http://pickclothes.iptime.org/node/recommend/situation', {num : this.num, situation : situation, gender : gender}).then(response => {
                     this.coordis = response.data.day;
                     this.week_coordis = response.data.week;
                     this.month_coordis = response.data.month;
@@ -604,17 +631,22 @@ let load = new Vue({
                     for(let i = 0 ; i < this.coordis.length; i++) {
                         this.coordis[i].file = 'http://pickclothes.iptime.org:3000/coordi/' + this.coordis[i].file;
                         $('#day' + (i + 1)).attr('src', this.coordis[i].file);
+                        $('#day' + (i + 1)).css('cursor', 'pointer')
 
-                    }
+                    }                
+
 
                     for(let k = 0 ; k < this.coordis.length; k++) {
                         this.week_coordis[k].file = 'http://pickclothes.iptime.org:3000/coordi/' + this.week_coordis[k].file;
                         $('#week' + (k + 1)).attr('src', this.week_coordis[k].file);
+                        $('#week' + (k + 1)).css('cursor', 'pointer')
+
                     }
 
                     for(let j = 0 ; j < this.coordis.length; j++) {
                         this.month_coordis[j].file = 'http://pickclothes.iptime.org:3000/coordi/' + this.month_coordis[j].file;
                         $('#month' + (j + 1)).attr('src', this.month_coordis[j].file);
+                        $('#month' + (j + 1)).css('cursor', 'pointer')
                     }
           
             });        
@@ -660,16 +692,16 @@ let load = new Vue({
                     }
 
                     //태그 입력
-                    //this.tag = this.tag + response.data[0].item1;
-                    //this.tag = this.tag + ' ' + response.data[0].item2;
-                    //this.tag = this.tag + ' ' + response.data[0].item3;
+                    this.tag = this.tag + response.data[0].item1;
+                    this.tag = this.tag + ' ' + response.data[0].item2;
+                    this.tag = this.tag + ' ' + response.data[0].item3;
                     this.tag = this.tag + ' ' + response.data[0].season1;
                     if(response.data[0].season2 != null) this.tag = this.tag + ' ' + response.data[0].season2;
                     this.tag = this.tag + ' ' + response.data[0].situation1;
                     if(response.data[0].situation2 != null) this.tag = this.tag + ' ' + response.data[0].situation2;
-                    //this.tag = this.tag + ' ' + response.data[0].color1;
-                    //if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
-                    //if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
+                    this.tag = this.tag + ' ' + response.data[0].color1;
+                    if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
+                    if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
 
                     document.getElementById('detail_tag').innerText = this.tag;
                     $('#detail_href').prop('href', 'http://pickclothes.iptime.org/profile/index.html?id=' + this.user_id)

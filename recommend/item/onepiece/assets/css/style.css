@@ -277,6 +277,22 @@ clearfix
     height: 0;
 }
 
+.gender{
+    width: 100px;
+    padding: .4em .4em;
+    font-family: inherit;
+    background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #999;
+    border-radius: 0px;
+    font-size: 15px;
+    box-sizing: border-box;
+    position: relative;
+    top: -6px;
+}
+
 /*푸터*/
 .footer_infor {
     text-align: center;

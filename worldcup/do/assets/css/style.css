@@ -64,30 +64,36 @@ clearfix
     font-family: "Gungsuh", "궁서";
 }
 /*로그인 회원가입 버튼*/
-.login{
+.login {
     position: absolute;
-    right:250px;
-    bottom:8px;
-}
-.login a{
-    margin-right: 10px;
-    font-size:13px;
-}
-.login_after{
-    position:absolute;
     right: 250px;
-    bottom:8px;
-    
+    bottom: 8px;
+    display: block;
 }
-.login_after li{
+
+.login a {
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+.login_after {
+    position: absolute;
+    right: 250px;
+    bottom: 8px;
+
+}
+
+.login_after li {
     display: inline;
     position: relative;
     padding-right: 5px;
     white-space: nowrap;
 }
-.login_session{
+
+.login_session {
     display: none;
 }
+
 /*검색 시작*/
 .search__input {
     width: 170px;
@@ -353,6 +359,7 @@ clearfix
     font-family: "Dotum";
     vertical-align:bottom; 
 }
+
 .cup{
     text-align:center;
     font-size: 50px;
@@ -373,14 +380,25 @@ clearfix
 }
 
 .world-photo figure{
+    position: relative;
     float:left; 
     margin-right:4%;
     margin-bottom: 4%;
-    border: 1px solid #eee;
     width:47.5%;
-    height : 47.5%;
+    height: 607.997px;
+    background:#eee;
 }
-
+.world-photo figure img{
+     position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    transform: translate(-50%,-50%);
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}
 .world-photo figure:last-child{margin-right: 0px;}
 
 #choice{
@@ -430,36 +448,41 @@ clearfix
 
 
 @media (max-width: 768px) {
-    /* 로그인 */
-    .login {
-        position: absolute;
-        right : 5px;
-        bottom: 50px;
-        display: block;
-    }
+/* 로그인 */
+.login {
+    position: absolute;
+    right : 5px;
+    bottom: 50px;
+    display: block;
+}
 
-    .login a {
-        margin-right: 5px;
-        font-size: 10px;
-    }
+.login a {
+    margin-right: 5px;
+    font-size: 10px;
+}
 
-    .login_after {
-        position: absolute;
-        right: 5px;
-        bottom: 50px;
+.login_after {
+    position: absolute;
+    right: 5px;
+    bottom: 50px;
 
-    }
-        
-    .login_after a {
-        margin-right: 5px;
-        font-size: 9px;
-    }
+}
+    
+.login_after a {
+    margin-right: 5px;
+    font-size: 9px;
+}
 
-    #hellonick {
-        display: none;
-    }
-   
+#hellonick {
+    display: none;
+}
 
+.login_after li {
+    display: inline;
+    position: relative;
+    padding-right: 0px;
+    white-space: nowrap;
+}
     /*네비게이션*/
     .sidenav {
         height: 0;
@@ -504,7 +527,7 @@ clearfix
         }
 }
     @media (max-width: 600px) {
-        /* 로그인 */
+               /* 로그인 */
     .login {
         position: absolute;
         right : 1px;

@@ -74,6 +74,8 @@
             <div class="login_session" id='logprofile'>
                 <a href="../upload/">코디 업로드</a>
                 <a id="href_profile">프로필</a></div>
+            <a href="../howto/">이용안내</a>
+
             <a href="#">Contact</a>
         </div>
     </header>
@@ -251,6 +253,12 @@
                                         <option value="">상황2</option>
                                         <option value="데이트">데이트</option>
                                         <option value="면접">면접</option>
+                                    </select>
+
+                                    <select id="gender" class="season1">
+                                        <option value="">성별</option>
+                                        <option value="man">남자</option>
+                                        <option value="woman">여자</option>
                                     </select>
                                     <textarea id="memo" class="memo" placeholder="코디에 대해 자세하게 적어주세요"></textarea>
                                 </div></div>                                
@@ -527,7 +535,10 @@ let uploadVue = new Vue({
             let season2 = $('#season2').val();
             let situation1 = $('#situation1').val();
             let situation2 = $('#situation2').val();
+            let gender = $('#gender').val();
             let memo = $('#memo').val();
+
+            console.log(gender);
             
             //err 체크
             let file = $("input[name=file]")[0].files[0];
@@ -553,6 +564,7 @@ let uploadVue = new Vue({
             formData.append('item1', item1);
             formData.append('item2', item2);
             formData.append('item3', item3);
+            formData.append('gender', gender);
             formData.append('memo', memo);
             
             let bool = confirm('업로드 하시겠습니까?');

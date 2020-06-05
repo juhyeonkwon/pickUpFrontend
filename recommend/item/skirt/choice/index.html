@@ -91,7 +91,13 @@
             <div class="row">
                 <div class="codi_recommand">
                     <div class="sub_title">
-                        <h1 id="sub_situation">코디 추천</h1>
+                        <h1 id="sub_situation" style="display: inline">코디 추천</h1>
+                        <h1 id="gender_box" style="display: inline">
+                            <select id="genter" name="gender" class="gender" onchange="load.coordi_load()">
+                                <option value="woman">여자</option>
+                                <option value="man">남자</option>
+                            </select>
+                        </h1>
                     </div>
                             <div class="codi_title">
                              <ul>
@@ -104,7 +110,7 @@
                     <div class="codi_recommand_image">
                        <!--일간-->
                         <div class="swiper-container">
-                            <div class="cont1 swiper-wrapper">
+                            <div id="cont1day" class="cont1 swiper-wrapper">
                                 <div class=" swiper-slide" id='day_swiper1'>
                                     <div class="codi">
                                         <div class="item">
@@ -382,20 +388,14 @@
                 <em class="name">
                     <a href="#" id="detail_href">
                         <strong id="detail_nick_name">
-                            Banana
                         </strong>
                         <em id="detail_email">
-                            (IwantNS@Gmail.com)
                         </em>
                     </a>
                 </em>
                 <div class="memo">
                     <div class="memo_infor">
-                        <em id="em_memo">상의:몰라
-                        모자:몰라
-                        신발:몰라
-                        하의:몰라
-                        선글라스 몰라</em>
+                        <em id="em_memo"></em>
                     </div>
                 </div>
             </div>
@@ -405,7 +405,7 @@
                 <div class="tag">
                     <img src="assets/img/tag.jpg">
                     <div class="tag_infor" >
-                        <em id="detail_tag">상의 여름 나들이 진갈색</em>
+                        <em id="detail_tag"></em>
                     </div>
                 </div>
                 <div id="modal_btn" style="display:none;">
@@ -440,6 +440,7 @@
     <script src="assets/js/ie-checker.js"></script>
     <script src="assets/js/swiper.min.js"></script>
     <script src="assets/js/viewer.js"></script>
+    <!-- 자바스크립트 코드-->
     <script>
         /*네비게이션 */
         $('#sidebarCollapse').on('click', function() {
@@ -520,6 +521,12 @@ function getUrlParams() {
 vuejs
 */
 
+let gen = true; //gender
+
+function changeGen() {
+    gen = !gen;
+}
+
 //삭제,수정 등 하기위한 변수
 let detail_coordi_id;
 
@@ -574,7 +581,24 @@ let load = new Vue({
 
             document.getElementById('sub_situation').innerText = "추천 코디 > 아이템별 > 스커트 > " + params.item + ", " + params.color;
 
-            axios.post('http://pickclothes.iptime.org/node/recommend/item', {num : this.num, item : params.item, color : params.color}).then(response => {
+            changeGen();       
+            let gender;
+
+            if(gen) {
+                gender = 'man'
+            } else {
+                gender = 'woman'
+            }
+
+            for(i = 1; i < 11; i++) {
+                $('#day' + i).attr('src', './assets/img/noimage.jpg');
+                $('#week' + i).attr('src', './assets/img/noimage.jpg')
+                $('#month' + i).attr('src', './assets/img/noimage.jpg');
+            }
+
+     
+
+            axios.post('http://pickclothes.iptime.org/node/recommend/item', {num : this.num, item : params.item, color : params.color, gender : gender}).then(response => {
                     this.coordis = response.data.day;
                     this.week_coordis = response.data.week;
                     this.month_coordis = response.data.month;
@@ -606,25 +630,31 @@ let load = new Vue({
                         $(id).off('click');
                         $(id).css('cursor', 'default')
                     }
-                    
+
+                    if(cordi_len === 0) {
+                        return;
+                    }
+
                     console.log(response.data);
                     for(let i = 0 ; i < this.coordis.length; i++) {
                         this.coordis[i].file = 'http://pickclothes.iptime.org:3000/coordi/' + this.coordis[i].file;
                         $('#day' + (i + 1)).attr('src', this.coordis[i].file);
-                        document.getElementById('day_swiper' + (i + 1)).style.visibility = 'visible'
-                    }
+                        $('#day' + (i + 1)).css('cursor', 'pointer')
+
+                    }                
+
 
                     for(let k = 0 ; k < this.coordis.length; k++) {
                         this.week_coordis[k].file = 'http://pickclothes.iptime.org:3000/coordi/' + this.week_coordis[k].file;
                         $('#week' + (k + 1)).attr('src', this.week_coordis[k].file);
-                        document.getElementById('week_swiper' + (k + 1)).style.visibility = 'visible'
+                        $('#week' + (k + 1)).css('cursor', 'pointer')
 
                     }
 
                     for(let j = 0 ; j < this.coordis.length; j++) {
                         this.month_coordis[j].file = 'http://pickclothes.iptime.org:3000/coordi/' + this.month_coordis[j].file;
                         $('#month' + (j + 1)).attr('src', this.month_coordis[j].file);
-                        document.getElementById('month_swiper' + (j + 1)).style.visibility = 'visible'
+                        $('#month' + (j + 1)).css('cursor', 'pointer')
 
                     }
           
@@ -662,16 +692,16 @@ let load = new Vue({
                     }
 
                     //태그 입력
-                    //this.tag = this.tag + response.data[0].item1;
-                    //this.tag = this.tag + ' ' + response.data[0].item2;
-                    //this.tag = this.tag + ' ' + response.data[0].item3;
+                    this.tag = this.tag + response.data[0].item1;
+                    this.tag = this.tag + ' ' + response.data[0].item2;
+                    this.tag = this.tag + ' ' + response.data[0].item3;
                     this.tag = this.tag + ' ' + response.data[0].season1;
                     if(response.data[0].season2 != null) this.tag = this.tag + ' ' + response.data[0].season2;
                     this.tag = this.tag + ' ' + response.data[0].situation1;
                     if(response.data[0].situation2 != null) this.tag = this.tag + ' ' + response.data[0].situation2;
-                    //this.tag = this.tag + ' ' + response.data[0].color1;
-                    //if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
-                    //if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
+                    this.tag = this.tag + ' ' + response.data[0].color1;
+                    if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
+                    if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
 
                     document.getElementById('detail_tag').innerText = this.tag;
                     $('#detail_href').prop('href', 'http://pickclothes.iptime.org/profile/index.html?id=' + this.user_id)

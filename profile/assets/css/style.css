@@ -75,7 +75,7 @@
     position: absolute;
     right:250px;
     bottom:8px;
-    display: none;
+
 }
 .login a{
     margin-right: 10px;
@@ -668,10 +668,9 @@ body.modal_on {
     .photo .item1:nth-child(2n) {
         margin-right: 0px;
     }
+         .img {height: 100vw; width: 100%;}
     .modal{
-        min-height: 0px; 
-    min-width: 0px;
-            border: 0px;
+        border: 0px;
     }
  
 }

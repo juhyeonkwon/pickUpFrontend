@@ -78,6 +78,7 @@
             <div class="login_session" id='logprofile'>
                 <a href="../../upload/">코디 업로드</a>
                 <a id="href_profile">프로필</a></div>
+            <a href="../../howto/">이용안내</a>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -291,13 +292,15 @@ let vue = new Vue({
             this.situation = this.changeKor(params.situation);
 
             this.eng_season = params.season;
-            console.log(this.eng_season);
             this.season = this.changeKor(params.season);
+
+            //성별 값
+            let gender = params.gender;
 
 
             //서버에서 코디들을 가져옵니다
             if(this.eng_season === undefined) {
-                axios.post('http://pickclothes.iptime.org/node/worldcup', {situation : this.situation, num : this.round}).then(response => {
+                axios.post('http://pickclothes.iptime.org/node/worldcup', {situation : this.situation, gender : gender, num : this.round}).then(response => {
                     this.coordis = response.data
 
                     for(let i = 0 ; i < this.coordis.length; i++) {
@@ -305,7 +308,7 @@ let vue = new Vue({
                     }               
                 });
             } else {
-                axios.post('http://pickclothes.iptime.org/node/worldcup/season', {season : this.season, num : this.round}).then(response => {
+                axios.post('http://pickclothes.iptime.org/node/worldcup/season', {season : this.season, gender : gender, num : this.round}).then(response => {
                     this.coordis = response.data
 
                     for(let i = 0 ; i < this.coordis.length; i++) {

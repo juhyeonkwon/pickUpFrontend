@@ -77,6 +77,7 @@
         <div class="login_session" id='logprofile'>
             <a href="../../upload/">코디 업로드</a>
             <a id="href_profile">프로필</a></div>
+        <a href="../../howto/">이용안내</a>
         <a href="#">Contact</a>
     </div>
 </header>
@@ -98,10 +99,17 @@
                 </div>      
             </div>
             <div id="round">
+                코디가 부족해서 16강으로 밖에 진행이 안되는점 양해부탁드립니다. <br>
                 <select class="select_round" v-model="select">
-                    <option>32강</option>
+                    <!--<option>32강</option>-->
                     <option>16강</option>
-                </select>
+                </select> 
+                <br />
+                <br />
+                <select class="select_round" v-model="gender">
+                    <option>남자</option>
+                    <option>여자</option>
+                </select> <br /> <br />
 
                 <button id="submit" v-on:click="start()">시작</button>
                 <br />
@@ -258,24 +266,41 @@ let round = new Vue({
         this.season = params.season;
     },
     data : {
-        select : '32강',
+        select : '16강',
         situation : '',
         season : '',
+        gender : '남자',
     },
     methods : {
       start : function() {
         console.log(this.select + "    " + this.situation);
         if(this.season === undefined) {
             if(this.select === "32강"){
-                location.href = "../do?round=32&situation=" + this.situation;
-            } else if(this.select === "16강"){
-                    location.href = "../do?round=16&situation=" + this.situation;        
+                if(this.gender === "남자") {
+                    location.href = "../do?round=32&situation=" + this.situation + "&gender=man";
+                } else {
+                    location.href = "../do?round=32&situation=" + this.situation + "&gender=woman";
+                }
+            } else if(this.select === "16강") {
+                if(this.gender === "남자") {
+                    location.href = "../do?round=16&situation=" + this.situation + "&gender=man";        
+                } else {
+                    location.href = "../do?round=16&situation=" + this.situation + "&gender=woman";        
+                }
             }
         } else {
             if(this.select === "32강"){
-                location.href = "../do?round=32&season=" + this.season;
+                if(this.gender === "남자") {
+                    location.href = "../do?round=32&season=" + this.season + "&gender=man";
+                } else {
+                    location.href = "../do?round=32&season=" + this.season + "&gender=woman";
+                }
             } else if(this.select === "16강"){
-                    location.href = "../do?round=16&season=" + this.season;        
+                    if(this.gender === "남자") {
+                    location.href = "../do?round=16&season=" + this.season + "&gender=man";
+                } else {
+                    location.href = "../do?round=16&season=" + this.season + "&gender=woman";
+                }       
             }
         }
       }

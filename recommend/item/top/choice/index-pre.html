@@ -254,7 +254,9 @@ let vue = new Vue({
             params.item = params.item.replace('\%2F', '/')
             
             axios.post('http://121.1.71.52:3333/node/recommend/item', {item : params.item, color : params.color, num : this.num}).then(response => {
+                    console.log('axios')
                     this.coordis = response.data;
+                    console.log(this.coordis)
 
                     for(let i = 0 ; i < this.coordis.length; i++) {
                         this.coordis[i].file = 'http://121.1.71.52:3000/coordi/' + this.coordis[i].file;

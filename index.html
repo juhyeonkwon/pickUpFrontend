@@ -83,6 +83,7 @@
             <a href="./recommend/">코디 추천</a>
             <a href="./upload/" id="upload_menu" style="display: none;">코디 업로드</a>
             <a id="href_profile">프로필</a>
+            <a href="./howto/">이용안내</a>
             <a href="#">Contact</a>
         </div>
     </header>
@@ -104,7 +105,7 @@
         <div class="container">
             <div class="row">
                 <div class="sub_title">
-                    <h1>NEW</h1>
+                    <h1>NEW Photo</h1>
                     <em><a href="./coordi/">더보기 ></a></em>
                 </div>
                 <div class="photo clearfix" id='photoVue'>
@@ -136,7 +137,7 @@
                             <a href="./worldcup/round/?season=spring"><img src="assets/img/spring.jpg"></a>
                         </li> 
                         <li class="item1">
-                            <a href="./worldcup/round/?season=summer"><img src="assets/img/summer.jpg"></a>
+                            <a href="./worldcup/round/?season=fall"><img src="assets/img/fall.jpg"></a>
                         </li>                     
                     </ul>
                 </div>
@@ -375,16 +376,16 @@ window.onpageshow = function(event) {
            
 
                     //태그 입력
-                    //this.tag = this.tag + response.data[0].item1;
-                    //this.tag = this.tag + ' ' + response.data[0].item2;
-                    //this.tag = this.tag + ' ' + response.data[0].item3;
+                    this.tag = this.tag + response.data[0].item1;
+                    this.tag = this.tag + ' ' + response.data[0].item2;
+                    this.tag = this.tag + ' ' + response.data[0].item3;
                     this.tag = this.tag + ' ' + response.data[0].season1;
                     this.tag = this.tag + ' ' + response.data[0].season2;
                     this.tag = this.tag + ' ' + response.data[0].situation1;
                     this.tag = this.tag + ' ' + response.data[0].situation2;
-                    //this.tag = this.tag + ' ' + response.data[0].color1;
-                    //if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
-                    //if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
+                    this.tag = this.tag + ' ' + response.data[0].color1;
+                    if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
+                    if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
 
                     document.getElementById('detail_tag').innerText = this.tag;
                     $('#detail_href').prop('href', 'http://pickclothes.iptime.org/profile/index.html?id=' + this.user_id)

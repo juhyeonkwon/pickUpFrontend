@@ -78,6 +78,7 @@
                 <a href="" id="href_profile">프로필</a>
                 </div>            
             <a href="#">Contact</a>
+            <a href="../howto/">이용안내</a>
         </div>
     </header>
     <section id="banner">
@@ -326,18 +327,18 @@ let vue = new Vue({
                 }
 
                 //태그 입력
-                //this.tag = this.tag + response.data[0].item1;
-                //this.tag = this.tag + ' ' + response.data[0].item2;
-                //this.tag = this.tag + ' ' + response.data[0].item3;
+                this.tag = this.tag + response.data[0].item1;
+                this.tag = this.tag + ' ' + response.data[0].item2;
+                this.tag = this.tag + ' ' + response.data[0].item3;
                 this.tag = this.tag + ' ' + response.data[0].season1;
                 this.tag = this.tag + ' ' + response.data[0].season2;
                 this.tag = this.tag + ' ' + response.data[0].situation1;
                 this.tag = this.tag + ' ' + response.data[0].situation2;
-                //this.tag = this.tag + ' ' + response.data[0].color1;
-                //if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
-                //if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
+                this.tag = this.tag + ' ' + response.data[0].color1;
+                if(response.data[0].color2 != null) this.tag = this.tag + ' ' + response.data[0].color2;
+                if(response.data[0].color3 != null)this.tag = this.tag + ' ' + response.data[0].color3;
 
-                console.log(this.tag);
+                console.log(coordi_id);
 
                 $('#detail_href').prop('href', 'http://pickclothes.iptime.org/profile/index.html?id=' + this.user_id)
                 document.getElementById('detail_nick_name').innerText = this.nick_name;
