@@ -411,7 +411,7 @@
                 <div id="modal_btn" style="display:none;">
                 <div class="btn report" v-on:click="report()"><em>신고</em></div>
                 <div class="btn erase" id="deleteBtn" style="display:none;" onclick="btn.delete();"><em>삭제</em></div>
-                <div class="btn rewrite" id="modifyBtn" style="display:none;" ><em>수정</em></div>
+                <div class="btn rewrite" id="modifyBtn" style="display:none;" onclick="btn.modify()"><em>수정</em></div>
             </div>
             </div>
         </div>
@@ -689,6 +689,9 @@ let load = new Vue({
                     if(this.logined_user_id === this.user_id) {
                         document.getElementById('deleteBtn').style.display = "block";
                         document.getElementById('modifyBtn').style.display = "block";
+                    } else {
+                        document.getElementById('deleteBtn').style.display = "none";
+                        document.getElementById('modifyBtn').style.display = "none";
                     }
 
                     //태그 입력
@@ -750,6 +753,9 @@ let btn = new Vue({
             } else {
                 return ;
             }
+        },
+        modify : function() {
+            location.href = '../../../../coordi_modify/?coordi_id=' + detail_coordi_id;
         }
     }
 });

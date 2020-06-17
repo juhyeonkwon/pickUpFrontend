@@ -411,7 +411,7 @@
                 <div id="modal_btn" style="display:none;">
                 <div class="btn report" v-on:click="report()"><em>신고</em></div>
                 <div class="btn erase" id="deleteBtn" style="display:none;" onclick="btn.delete();"><em>삭제</em></div>
-                <div class="btn rewrite" id="modifyBtn" style="display:none;" ><em>수정</em></div>
+                <div class="btn rewrite" id="modifyBtn" style="display:none;" onclick="btn.modify()"><em>수정</em></div>
             </div>
             </div>
         </div>
@@ -571,7 +571,7 @@ let load = new Vue({
                         let profile = document.getElementById('logprofile');
                         profile.style.display = 'block';
                         
-                        $('#href_profile').attr('href', '../../../profile/?id=' + response.data.user_id);
+                        $('#href_profile').attr('href', '../../../../profile/?id=' + response.data.user_id);
                     }
                 }).catch(error => { console.log('con err')});
         },
@@ -612,20 +612,21 @@ let load = new Vue({
 
                     console.log(cordi_len);
 
-                    for(let i = cordi_len; i < 11; i++) {
+                    for(let i = cordi_len; i < 10; i++) {
                         let id = '#day' + (i+1);
                         $(id).off('click');
+                        console.log('off');
                         $(id).css('cursor', 'default')
                     }
 
-                    for(let i = cordi_len; i < 11; i++) {
+                    for(let i = cordi_len; i < 10; i++) {
                         let id = '#week' + (i+1);
                         $(id).off('click');
                         $(id).css('cursor', 'default')
 
                     }
 
-                    for(let i = cordi_len; i < 11; i++) {
+                    for(let i = cordi_len; i < 10; i++) {
                         let id = '#month' + (i+1);
                         $(id).off('click');
                         $(id).css('cursor', 'default')
@@ -655,7 +656,6 @@ let load = new Vue({
                         this.month_coordis[j].file = 'http://pickclothes.iptime.org:3000/coordi/' + this.month_coordis[j].file;
                         $('#month' + (j + 1)).attr('src', this.month_coordis[j].file);
                         $('#month' + (j + 1)).css('cursor', 'pointer')
-
                     }
           
             });        
@@ -689,6 +689,9 @@ let load = new Vue({
                     if(this.logined_user_id === this.user_id) {
                         document.getElementById('deleteBtn').style.display = "block";
                         document.getElementById('modifyBtn').style.display = "block";
+                    } else {
+                        document.getElementById('deleteBtn').style.display = "none";
+                        document.getElementById('modifyBtn').style.display = "none";
                     }
 
                     //태그 입력
@@ -750,6 +753,9 @@ let btn = new Vue({
             } else {
                 return ;
             }
+        },
+        modify : function() {
+            location.href = '../../../../coordi_modify/?coordi_id=' + detail_coordi_id;
         }
     }
 });

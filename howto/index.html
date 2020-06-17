@@ -61,7 +61,7 @@
                     <div class="login_after login_session" id="login_session">
                         <ul>
                             <li id='hellonick'>?? 환영합니다</li>
-                            <li><a href="#">정보수정</a></li>
+                            <li><a href="../modify/">정보수정</a></li>
                             <li><a href="#" onclick="logout()">로그아웃</a></li>
                         </ul>
                     </div>
@@ -294,7 +294,6 @@ let vue = new Vue({
                 axios.post('http://pickclothes.iptime.org/node/login/check').then(response => {                    
                     console.log(response.data);
                     if(response.data.nick_name != undefined) {
-                        document.getElementById("modal_btn").style.display = "block";
                         this.logined_user_id = response.data.user_id;
                         document.getElementById('hellonick').innerText = response.data.nick_name + ' 님 환영합니다'
 
@@ -307,8 +306,6 @@ let vue = new Vue({
                         let profile = document.getElementById('href_profile');
                         profile.style.display = 'block';
 
-                        let upload_memu = document.getElementById('upload_menu');
-                        upload_memu.style.display = 'block';
 
                         $('#href_profile').attr('href', '/profile/?id=' + response.data.user_id);
 

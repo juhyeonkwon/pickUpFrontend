@@ -57,7 +57,7 @@
                     <div class="login_after login_session" id="login_session">
                         <ul>
                             <li id="hellonick">?? 환영합니다</li>
-                            <li><a href="#">정보수정</a></li>
+                            <li><a href="../modify/">정보수정</a></li>
                             <li><a href="#" onclick="logout()">로그아웃</a></li>
                         </ul>
                     </div>
@@ -165,7 +165,7 @@
             <div class="infor_btn" id="modal_btn" style="display:none;">
                 <div class="btn report" v-on:click="report()"><em>신고</em></div>
                 <div class="btn erase" id="deleteBtn" style="display:none;" onclick="btn.delete();"><em>삭제</em></div>
-                <div class="btn rewrite" id="modifyBtn" style="display:none;" ><em>수정</em></div>
+                <div class="btn rewrite"  id="modifyBtn"  style="display:none;" onclick="btn.modify()"><em>수정</em></div>
             </div>
         </div>
     </aside>
@@ -324,6 +324,9 @@ let vue = new Vue({
                 if(vue.logined_user_id === this.user_id) {
                     document.getElementById('deleteBtn').style.display = "block";
                     document.getElementById('modifyBtn').style.display = "block";
+                } else {
+                    document.getElementById('deleteBtn').style.display = "none";
+                    document.getElementById('modifyBtn').style.display = "none";
                 }
 
                 //태그 입력
@@ -340,7 +343,7 @@ let vue = new Vue({
 
                 console.log(coordi_id);
 
-                $('#detail_href').prop('href', 'http://pickclothes.iptime.org/profile/index.html?id=' + this.user_id)
+                $('#detail_href').prop('href', 'http://pickclothes.iptime.org/profile/index.html?id=' + this.user_id);
                 document.getElementById('detail_nick_name').innerText = this.nick_name;
                 document.getElementById('detail_email').innerText = this.email;
                 document.getElementById('detail_tag').innerText = this.tag;
@@ -426,6 +429,9 @@ let btn = new Vue({
             } else {
                 return ;
             }
+        },
+        modify : function() {
+            location.href = '../coordi_modify/?coordi_id=' + detail_coordi_id;
         }
     }
 })

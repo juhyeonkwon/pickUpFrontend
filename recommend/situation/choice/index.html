@@ -56,7 +56,7 @@
                     <div class="login_after login_session" id="login_session">
                         <ul>
                             <li id='hellonick'>?? 환영합니다</li>
-                            <li><a href="#">정보수정</a></li>
+                            <li><a href="../../../modify/">정보수정</a></li>
                             <li><a href="#" onclick="logout()">로그아웃</a></li>
                         </ul>
                     </div>
@@ -689,6 +689,9 @@ let load = new Vue({
                     if(this.logined_user_id === this.user_id) {
                         document.getElementById('deleteBtn').style.display = "block";
                         document.getElementById('modifyBtn').style.display = "block";
+                    } else {
+                        document.getElementById('deleteBtn').style.display = "none";
+                        document.getElementById('modifyBtn').style.display = "none";
                     }
 
                     //태그 입력
@@ -750,6 +753,9 @@ let btn = new Vue({
             } else {
                 return ;
             }
+        },
+        modify : function() {
+            location.href = '../../../coordi_modify/?coordi_id=' + detail_coordi_id;
         }
     }
 });

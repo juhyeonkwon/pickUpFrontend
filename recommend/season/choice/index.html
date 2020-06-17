@@ -56,7 +56,7 @@
                     <div class="login_after login_session" id="login_session">
                         <ul>
                             <li id='hellonick'>?? 환영합니다</li>
-                            <li><a href="#">정보수정</a></li>
+                            <li><a href="../../../modify/">정보수정</a></li>
                             <li><a href="#" onclick="logout()">로그아웃</a></li>
                         </ul>
                     </div>
@@ -118,7 +118,7 @@
                                     <div class="rank"><strong>1</strong></div>
                                 </div>
                             </div>
-                            <div class=" swiper-slide" style="visibility: hidden;;" id='day_swiper2'>
+                            <div class=" swiper-slide"  id='day_swiper2'>
                                 <div class="codi">
                                     <div class="item">
                                         <img src="./assets/img/noimage.jpg" id='day2' onclick="load.detail(2, 'day')">
@@ -126,7 +126,7 @@
                                     <div class="rank"><strong>2</strong></div>
                                 </div>
                             </div>
-                            <div class=" swiper-slide" style="visibility: hidden;;" id='day_swiper3'>
+                            <div class=" swiper-slide" id='day_swiper3'>
                                 <div class="codi">
                                     <div class="item">
                                         <img src="./assets/img/noimage.jpg" id='day3' onclick="load.detail(3, 'day')">
@@ -410,7 +410,7 @@
                 <div id="modal_btn" style="display:none;">
                 <div class="btn report" v-on:click="report()"><em>신고</em></div>
                 <div class="btn erase" id="deleteBtn" style="display:none;" onclick="btn.delete();"><em>삭제</em></div>
-                <div class="btn rewrite" id="modifyBtn" style="display:none;" ><em>수정</em></div>
+                <div class="btn rewrite" id="modifyBtn" style="display:none;" onclick="btn.modify()" ><em>수정</em></div>
             </div>
             </div>
         </div>
@@ -687,6 +687,9 @@ let load = new Vue({
                     if(this.logined_user_id === this.user_id) {
                         document.getElementById('deleteBtn').style.display = "block";
                         document.getElementById('modifyBtn').style.display = "block";
+                    } else {
+                        document.getElementById('deleteBtn').style.display = "none";
+                        document.getElementById('modifyBtn').style.display = "none";
                     }
 
                     //태그 입력
@@ -747,7 +750,11 @@ let btn = new Vue({
             } else {
                 return ;
             }
+        },
+        modify : function() {
+            location.href = '../../../coordi_modify/?coordi_id=' + detail_coordi_id;
         }
+
     }
 });
 

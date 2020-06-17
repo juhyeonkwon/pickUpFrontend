@@ -57,7 +57,7 @@
                     <div class="login_after login_session" id='login_session'>
                         <ul>
                             <li id='hellonick'>?? 환영합니다</li>
-                            <li><a href="#">정보수정</a></li>
+                            <li><a href="../modify/">정보수정</a></li>
                             <li><a href="#" onclick="logout()">로그아웃</a></li>
                         </ul>
                     </div>
@@ -74,7 +74,7 @@
             <a href="../coordi/">코디 Photo</a>
             <a href="../worldcup/">이상형 월드컵</a>
             <a href="../recommend/">코디 추천</a>
-            <div class="login_session" id='logprofile'>
+            <div class="login_session" id='logprofile' style="display: none;">
                 <a href="../upload/">코디 업로드</a>
                 <a href="#">프로필</a></div>
             <a href="../howto/">이용안내</a>
@@ -146,7 +146,7 @@
             <div id="modal_btn" style="display:none;">
                 <div class="btn report" v-on:click="report()"><em>신고</em></div>
                 <div class="btn erase" id="deleteBtn" style="display:none;" onclick="btn.delete();"><em>삭제</em></div>
-                <div class="btn rewrite" id="modifyBtn" style="display:none;" ><em>수정</em></div>
+                <div class="btn rewrite" id="modifyBtn" style="display:none;" onclick="btn.modify();"><em>수정</em></div>
             </div>
         </div>
     </div>
@@ -347,6 +347,9 @@ var photo = new Vue({
                 if(vue.logined_user_id === this.user_id) {
                     document.getElementById('deleteBtn').style.display = "block";
                     document.getElementById('modifyBtn').style.display = "block";
+                } else {
+                    document.getElementById('deleteBtn').style.display = "none";
+                    document.getElementById('modifyBtn').style.display = "none";
                 }
 
                 console.log(response.data[0]);
@@ -411,6 +414,9 @@ let btn = new Vue({
             } else {
                 return ;
             }
+        },
+        modify : function() {
+            location.href = '../coordi_modify/?coordi_id=' + detail_coordi_id;
         }
     }
 });

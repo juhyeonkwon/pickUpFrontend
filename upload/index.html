@@ -55,7 +55,7 @@
                     <div class="login_after login_session" id="login_session">
                         <ul>
                             <li id='hellonick'>?? 환영합니다</li>
-                            <li><a href="#">정보수정</a></li>
+                            <li><a href="../modify/">정보수정</a></li>
                             <li><a href="#" onclick="logout()">로그아웃</a></li>
                         </ul>
                     </div>
@@ -466,7 +466,7 @@ methods : {
 
                 let profile = document.getElementById('logprofile');
                 profile.style.display = 'block';
-                $('#href_profile').attr('href', '/profile/?id=' + response.data.user_id);
+                $('#href_profile').attr('href', '../profile/?id=' + response.data.user_id);
     
             } else {
                 alert('로그인을 하셔야 업로드를 할 수 있습니다!');
